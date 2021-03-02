@@ -1,0 +1,108 @@
+/* HTML */
+/* <div class="TextGlitch" id="title">
+	<div class="TextGlitch-clip">
+		<div class="TextGlitch-word"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+	</div>
+	<div class="TextGlitch-clip">
+		<div class="TextGlitch-word"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+	</div>
+	<div class="TextGlitch-clip">
+		<div class="TextGlitch-word"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendA"></div>
+		<div class="TextGlitch-word TextGlitch-blend TextGlitch-blendB"></div>
+	</div>
+</div> */
+
+.TextGlitch {
+	--TextGlitch-blendSize: .08em;
+	--TextGlitch-blendColorA: #77f8;
+	--TextGlitch-blendColorB: #ff68;
+	
+	position: relative;
+	color: #fff;
+	line-height: 1em;
+	letter-spacing: -.1ch;
+	font-size: 4em;
+	font-family: Comfortaa;
+	margin: 0;
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	letter-spacing: 1rem;
+	font-weight: 600;
+  }
+
+  .TextGlitch::after {
+	display: none;
+	  content: "";
+	  position: absolute;
+	  left: 100%;
+	  bottom: 0;
+	  width: .7ch;
+	  height: 1em;
+	  margin-left: .35ch;
+	  border-radius: 2px;
+	  background-color: currentColor;
+	animation: cursorAnim 5s ease infinite;
+  }
+  @keyframes cursorAnim {
+	0% { opacity: 5.5; }
+	45% { opacity: 5.5; }
+	55% { opacity: 5; }
+	100% { opacity: 5; }
+  }
+  
+  .TextGlitch-clip {
+	position: relative;
+	display: flex;
+	align-items: baseline;
+  }
+  .TextGlitch-clip + .TextGlitch-clip {
+	position: absolute;
+	top: 0;
+  }
+  .TextGlitch:not( .TextGlitch-blended ) .TextGlitch-clip + .TextGlitch-clip {
+	display: none;
+  }
+  
+  .TextGlitch-word {
+	margin: 0;
+	white-space: nowrap;
+  }
+  
+  .TextGlitch-blend {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	transition: .1s;
+	transition-property: opacity;
+  }
+  .TextGlitch-blendA {
+	color: var( --TextGlitch-blendColorA );
+	margin: calc( var( --TextGlitch-blendSize ) * -1 ) 0 0 var( --TextGlitch-blendSize );
+	mix-blend-mode: darken;
+  }
+  .TextGlitch-blendB {
+	color: var( --TextGlitch-blendColorB );
+	margin: var( --TextGlitch-blendSize ) 0 0 calc( var( --TextGlitch-blendSize ) * -1 );
+	mix-blend-mode: color-burn;
+  }
+  .TextGlitch-blended .TextGlitch-blend {
+	opacity: .4;
+  }
+
+  @media screen and (max-width: 480px) {
+	.TextGlitch {
+		font-size: 2em;
+	  }
+	  .terminal {
+		margin-top: 1.5em;
+		font-size: 1rem!important;
+		letter-spacing: 0.1rem!important;
+	}
+  }
