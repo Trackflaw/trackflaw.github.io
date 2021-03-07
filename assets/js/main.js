@@ -255,6 +255,13 @@
         location.hash = "";
       });
 
+    // Close2.
+    $('<div class="close2" id="close2"></div>')
+      .appendTo($this)
+      .on("click", function () {
+        location.hash = "";
+      });
+
     // Prevent clicks from inside article from bubbling.
     $this.on("click", function (event) {
       event.stopPropagation();
@@ -337,7 +344,6 @@
     });
 })(jQuery);
 
-
 /* Typed js */
 
 setTimeout(() => {
@@ -347,7 +353,6 @@ setTimeout(() => {
     cursorChar: "_",
   });
 }, 600);
-
 
 /* Hacker text */
 
@@ -427,6 +432,17 @@ function launch_animated_text(word) {
 //   });
 // }
 
-function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
+//
+// Back to top
+//
+
+var btn = $("div#close2");
+btn.hide();
+
+$(window).scroll(function () {
+  if ($(window).scrollTop() > 300) {
+    btn.show();
+  } else {
+    btn.hide();
+  }
+});
