@@ -1903,7 +1903,7 @@ body.is-preload #footer {
 }
 
 .terminal {
-  margin-top: 1.5em;
+  margin-top: 0em;
   font-size: 1.5rem !important;
   color: rgba(255, 255, 255, 0.5);
   display: inline-block;
