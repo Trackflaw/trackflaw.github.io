@@ -308,7 +308,7 @@
       $main._show(location.hash.substr(1));
 
       for (let index = 0; index < words.length; index++) {
-        launch_animated_text(words[index]);
+        launch_animated_text(words[index], original_words[index]);
       }
     }
   });
@@ -383,14 +383,21 @@ function getRandomWord(word) {
   return finalWord;
 }
 
+original_words = []
+
+$(".hacker-text").each(function(){
+  var imageAlt = $(this).attr("alt");
+  original_words.push(imageAlt);
+});
+
 words = document.querySelectorAll(".hacker-text");
 
-function launch_animated_text(word) {
+function launch_animated_text(word, original_word) {
   var interv = "undefined";
   var canChange = false;
   var globalCount = 0;
   var count = 0;
-  var INITIAL_WORD = word.innerHTML;
+  var INITIAL_WORD = original_word;
   var isGoing = false;
 
   if (isGoing) return;
