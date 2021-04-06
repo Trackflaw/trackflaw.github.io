@@ -1931,6 +1931,13 @@ body.is-preload #footer {
   text-align: center;
 }
 
+.block-lonely {
+  /* border: solid #1b1f22 5px; */
+  flex-basis: 100%;
+  padding: 4em;
+  text-align: center;
+}
+
 .hacker-text {
   font-family: Roboto Mono;
   font-weight: 500;
