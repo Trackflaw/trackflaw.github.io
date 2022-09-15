@@ -1,165 +1,737 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  
+    Document Title
+    =============================================
+    -->
 		<title>Trackflaw | Full overall pentesting</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+    <!--  
+    Favicons
+    =============================================
+    -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!--  
+    Stylesheets
+    =============================================
+    
+    -->
+    <!-- Default stylesheets-->
+    <link href="assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="assets/lib/animate.css/animate.css" rel="stylesheet">
+    <link href="assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
+    <link href="assets/lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
+  </head>
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader">
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="index.html">Trackflaw</a>
+            <img src="logos/Original-transparent-icone.png" width="40px" style="vertical-align: text-top;">
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Home</a>
+                <ul class="dropdown-menu">
+                  <li><a href="index_mp_fullscreen_video_background.html">Default</a></li>
+                  <li><a href="index_op_fullscreen_gradient_overlay.html">One Page</a></li>
+                  <li><a href="index_agency.html">Agency</a></li>
+                  <li><a href="index_portfolio.html">Portfolio</a></li>
+                  <li><a href="index_restaurant.html">Restaurant</a></li>
+                  <li><a href="index_finance.html">Finance</a></li>
+                  <li><a href="index_landing.html">Landing Page</a></li>
+                  <li><a href="index_photography.html">Photography</a></li>
+                  <li><a href="index_shop.html">Shop</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Headers</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Static Image Header</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index_mp_fullscreen_static.html">Fulscreen</a></li>
+                      <li><a href="index_mp_classic_static.html">Classic</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Flexslider Header</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index_mp_fullscreen_flexslider.html">Fulscreen</a></li>
+                      <li><a href="index_mp_classic_flexslider.html">Classic</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Video Background Header</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index_mp_fullscreen_video_background.html">Fulscreen</a></li>
+                      <li><a href="index_mp_classic_video_background.html">Classic</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Text Rotator Header</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index_mp_fullscreen_text_rotator.html">Fulscreen</a></li>
+                      <li><a href="index_mp_classic_text_rotator.html">Classic</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Gradient Overlay Header</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="index_mp_fullscreen_gradient_overlay.html">Fulscreen</a></li>
+                      <li><a href="index_mp_classic_gradient_overlay.html">Classic</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Pages</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">About</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="about1.html">About 1</a></li>
+                      <li><a href="about2.html">About 2</a></li>
+                      <li><a href="about3.html">About 3</a></li>
+                      <li><a href="about4.html">About 4</a></li>
+                      <li><a href="about5.html">About 5</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="service1.html">Service 1</a></li>
+                      <li><a href="service2.html">Service 2</a></li>
+                      <li><a href="service3.html">Service 3</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Pricing</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="pricing1.html">Pricing 1</a></li>
+                      <li><a href="pricing2.html">Pricing 2</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Gallery</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="gallery_col_2.html">2 Columns</a></li>
+                      <li><a href="gallery_col_3.html">3 Columns</a></li>
+                      <li><a href="gallery_col_4.html">4 Columns</a></li>
+                      <li><a href="gallery_col_6.html">6 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Contact</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="contact1.html">Contact 1</a></li>
+                      <li><a href="contact2.html">Contact 2</a></li>
+                      <li><a href="contact3.html">Contact 3</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Restaurant menu</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="restaurant_menu1.html">Menu 2 Columns</a></li>
+                      <li><a href="restaurant_menu2.html">Menu 3 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="login_register.html">Login / Register</a></li>
+                  <li><a href="faq.html">FAQ</a></li>
+                  <li><a href="404.html">Page 404</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Portfolio</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Boxed</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="portfolio_boxed_col_2.html">2 Columns</a></li>
+                      <li><a href="portfolio_boxed_col_3.html">3 Columns</a></li>
+                      <li><a href="portfolio_boxed_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Boxed - Gutter</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="portfolio_boxed_gutter_col_2.html">2 Columns</a></li>
+                      <li><a href="portfolio_boxed_gutter_col_3.html">3 Columns</a></li>
+                      <li><a href="portfolio_boxed_gutter_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Full Width</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="portfolio_full_width_col_2.html">2 Columns</a></li>
+                      <li><a href="portfolio_full_width_col_3.html">3 Columns</a></li>
+                      <li><a href="portfolio_full_width_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Full Width - Gutter</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="portfolio_full_width_gutter_col_2.html">2 Columns</a></li>
+                      <li><a href="portfolio_full_width_gutter_col_3.html">3 Columns</a></li>
+                      <li><a href="portfolio_full_width_gutter_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Masonry</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Boxed</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio_masonry_boxed_col_2.html">2 Columns</a></li>
+                          <li><a href="portfolio_masonry_boxed_col_3.html">3 Columns</a></li>
+                          <li><a href="portfolio_masonry_boxed_col_4.html">4 Columns</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Full Width</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio_masonry_full_width_col_2.html">2 Columns</a></li>
+                          <li><a href="portfolio_masonry_full_width_col_3.html">3 Columns</a></li>
+                          <li><a href="portfolio_masonry_full_width_col_4.html">4 Columns</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Hover Style</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="portfolio_hover_black.html">Black</a></li>
+                      <li><a href="portfolio_hover_gradient.html">Gradient</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Single</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Featured Image</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio_single_featured_image1.html">Style 1</a></li>
+                          <li><a href="portfolio_single_featured_image2.html">Style 2</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Featured Slider</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio_single_featured_slider1.html">Style 1</a></li>
+                          <li><a href="portfolio_single_featured_slider2.html">Style 2</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Featured Video</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="portfolio_single_featured_video1.html">Style 1</a></li>
+                          <li><a href="portfolio_single_featured_video2.html">Style 2</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Blog</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Standard</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="blog_standard_left_sidebar.html">Left Sidebar</a></li>
+                      <li><a href="blog_standard_right_sidebar.html">Right Sidebar</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Grid</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="blog_grid_col_2.html">2 Columns</a></li>
+                      <li><a href="blog_grid_col_3.html">3 Columns</a></li>
+                      <li><a href="blog_grid_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Masonry</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="blog_grid_masonry_col_2.html">2 Columns</a></li>
+                      <li><a href="blog_grid_masonry_col_3.html">3 Columns</a></li>
+                      <li><a href="blog_grid_masonry_col_4.html">4 Columns</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Single</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="blog_single_left_sidebar.html">Left Sidebar</a></li>
+                      <li><a href="blog_single_right_sidebar.html">Right Sidebar</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Features</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="alerts-and-wells.html"><i class="fa fa-bolt"></i> Alerts and Wells</a></li>
+                  <li><a href="buttons.html"><i class="fa fa-link fa-sm"></i> Buttons</a></li>
+                  <li><a href="tabs_and_accordions.html"><i class="fa fa-tasks"></i> Tabs &amp; Accordions</a></li>
+                  <li><a href="content_box.html"><i class="fa fa-list-alt"></i> Contents Box</a></li>
+                  <li><a href="forms.html"><i class="fa fa-check-square-o"></i> Forms</a></li>
+                  <li><a href="icons.html"><i class="fa fa-star"></i> Icons</a></li>
+                  <li><a href="progress-bars.html"><i class="fa fa-server"></i> Progress Bars</a></li>
+                  <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Shop</a>
+                <ul class="dropdown-menu" role="menu">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Product</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="shop_product_col_3.html">3 columns</a></li>
+                      <li><a href="shop_product_col_4.html">4 columns</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="shop_single_product.html">Single Product</a></li>
+                  <li><a href="shop_checkout.html">Checkout</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a class="dropdown-toggle" href="documentation.html" data-toggle="dropdown">Documentation</a>
+                <ul class="dropdown-menu">
+                  <li><a href="documentation.html#contact">Contact Form</a></li>
+                  <li><a href="documentation.html#reservation">Reservation Form</a></li>
+                  <li><a href="documentation.html#mailchimp">Mailchimp</a></li>
+                  <li><a href="documentation.html#gmap">Google Map</a></li>
+                  <li><a href="documentation.html#plugin">Plugins</a></li>
+                  <li><a href="documentation.html#changelog">Changelog</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="home-section home-parallax home-fade home-full-height agency-page-header" id="home" data-background="logos/icone-animated.gif">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <!-- <div class="font-alt mb-40 titan-title-size-3">Full overall <span class="rotate">pentesting | simple | flexible</span> -->
+              <div class="font-alt mb-40 titan-title-size-3">TRACKFLAW
+            <div class="font-alt mb-30 titan-title-size-1">Full overall pentesting</div>
+            </div><a class="section-scroll btn btn-border-w btn-circle" href="#about"><lord-icon
+              src="https://cdn.lordicon.com/drtetngs.json"
+              trigger="hover"
+              colors="primary:#ffffff"
+              style="width:25px;height:25px"
+              class="current-color"
+              target="a.section-scroll.btn.btn-border-w.btn-circle"
+            >
+          </lord-icon> &nbsp;Commander</a>
+          </div>
+        </div>
+      </section>
+      <div class="main">
+        <section class="module">
+          <div class="container">
+            <h2 class="module-title font-alt align-center">Expertise</h2>
+            <hr>
+            <div class="row multi-columns-row">
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-target"></span></div>
+                  <h3 class="features-title font-alt">Test d'intrusion</h3><p>A l'aide d'une méticuleuse méthodologie, Trackflaw est en mesure de fournir des prestations de tests d'intrusion afin de relever un maximum de failles de sécurité.</p>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+                  <p>Trackflaw propose 3 prestations de tests d'intrusion : externe, interne et mobile.</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-presentation"></span></div>
+                  <h3 class="features-title font-alt">Conseil & formation</h3><p>Trackflaw intervient sur différents sujets de formation liés à la sécurité informatique dans des établissements d'enseignement supérieur, dans des entreprises privées ou encore des centres de formation spécialisés.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module pt-0 pb-0" id="about">
+          <div class="row position-relative m-0">
+            <div class="col-xs-12 col-md-6 side-image" data-background="logos/Original-slogan.png"></div>
+            <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h2 class="module-title font-alt align-left" style="margin-bottom: 20px">A propos de nous</h2>
+                  <h2 class="module-title font-alt align-left underline"></h2>
+                  <p><strong>Trackflaw</strong> est une startup spécialisée dans les tests d'intrusion. Son domaine d'expertise varie des tests d'intrusion externes, internes et mobiles aux formations spécialisées en sécurité informatique. En se concentrant uniquement sur les tests d'intrusion, Trackflaw a pour vocation de fournir des prestations de haute technicité afin de garantir l'exhaustivité et la qualité des tests effectués.</p>
 
-				<!-- Header -->
-					<header id="header">
-						
-						<div class="logo">
-							<!-- <span class="icon fa-gem"></span> -->
-							<img class="header-logo" src="/logos/Original-transparent-icone.png">
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1 class="big-title">Trackflaw</h1>
-								<p class="terminal" id="terminal"></p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#about">A propos</a></li>
-								<li><a href="#values">Valeurs</a></li>
-								<li><a href="#team">Equipe</a></li>
-								<li><a href="#services">Services</a></li>
-								<li><a href="#contact">Contact</a></li>
-							</ul>
-						</nav>
-					</header>
-
-				<!-- Main -->
-					<div id="main">
-
-						<article id="about">
-							<h2 class="major">A propos de nous</h2>
-
-							<p><strong>Trackflaw</strong> est une startup spécialisée dans la formation en sécurité informatique et plus particulièrement en sécurité offensive.</p>
-
-							<p>Grâce à des méthodologies strictes et à des exigences de travail rigoureuses, Trackflaw s'engage à fournir des formations concises et professionnelles compréhensibles par un public hautement managérial comme par des acteurs très techniques.</p>
-
-							<p>Toujours dans une optique de qualité optimale, aucune mission n'est sous-traitée afin de garantir le savoir-faire et l'image de marque de la société.</p>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-
-						<article id="values">
-							<h2 class="major">Nos valeurs</h2>
-							<p>De nombreuses entreprises sont présentes dans le monde de la sécurité informatique et plus particulièrement sur le marché des formations. Il est légitime de se demander pourquoi faire confiance à Trackflaw ?</strong></p>
-							<div class="block">
-								<h2><i style="font-size: 2em;" class="fas fa-sitemap"></i><br><br>
-									<div class="hacker-text 2" alt="Une méthodologie rigoureuse">Une méthodologie rigoureuse</div>
-								</h2>
-								<hr>
-								<p class="align-left">Pour garantir la haute qualité de ses formations, Trackflaw suit méticuleusement une méthodologie interne. Chaque cours est équilibré entre le contenu théorique et le contenu pratique. Un support de présentation, des feuilles d'exercices ainsi que des travaux pratiques sont prévus afin de dynamiser et optimiser l'apprentissage des étudiants. Le temps de correction et de suivi est compris dans la prestation.</p>
-							</div>
-							<div class="block">
-								<h2><i style="font-size: 2em;" class="fas fa-handshake-alt-slash"></i><br><br>
-									<div class="hacker-text 4" alt="Pas de sous-traitance">Pas de sous-traitance</div>
-								</h2>
-								<hr>
-								<p class="align-left">De nombreuses sociétés, peu scrupuleuses, sous-traitent leurs missions de formation pour diverses raisons. Ce manque de professionnalisme entraine des problèmes de suivi et de transparence pour le commanditaire.</p>
-								<p class="align-left">Chez Trackflaw, afin de garantir le savoir-faire, l'exigence et l'image de marque du cabinet, <strong>aucune mission n'est sous-traitée.</strong> Seuls les collaborateurs de la société sont autorisés à participer aux missions.</p>
-							</div>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-
-						<article id="team">
-							<h2 class="major">Equipe</h2>
-							<img class="image face" src="images/thibaud.jpeg" alt="" />
-							<p class="text-face"><span class="hacker-text 5" alt='Thibaud ROBIN'>Thibaud ROBIN</span></p>
-							<p>Propulsé par la passion et formé par l'une des meilleures sociétés de sécurité informatique de France, Trackflaw est fièrement dirigée par Thibaud Robin.</p>
-
-							<p>Passionné par la sécurité offensive, Thibaud passe ses journées à rechercher des vulnérabilités. Grâce à des tests d'intrusion externes, internes et mobiles, il vise à rendre le monde d'aujourd'hui plus sûr.</p>
-
-							<p>Le partage, la remise en cause, la tolérance et la modestie sont les différentes valeurs qu'il attribue à sa profession.</p>
-								
-							<h4>Points marquants</h4>
-							<ul>
-								<li>Administrateur sur root-me.org (<a href="https://root-me.org/th1b4ud">pseudo : Th1b4ud</a>)</li>
-								<li><a href="https://www.youracclaim.com/badges/089ad522-c87c-402f-a8ea-60f152356097">Certification OSCP</a></li>
-								<li>Certification CEH</li>
-								<li><a href="https://thibaud-robin.fr">Blog dédié à la sécurité informatique</a></li>
-								<li>Enseignant à l'ESGI</li>
-							</ul>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-
-						<article id="services">
-							<h2 class="major">Services</h2>
-							<div class="two-blocks">
-								<div class="block-lonely">
-									<h2><i style="font-size: 2em;" class="fas fa-chalkboard-teacher"></i><br><br><div class="hacker-text 7" alt="Enseignement">Enseignement</div></h2>
-									<hr>
-									<span style="text-align: left;">
-										<p>Trackflaw est en mesure d'intervenir sur différents sujets de formation liés à la sécurité informatique dans des établissements d'enseignement supérieur.</p>
-										<h4>Exemple de formations :</h4>
-										<ul>
-											<li>Preparation à la certificartion OSCP</li>
-											<li>Preparation à la certificartion CEH</li>
-											<li>Formation au développement sécurisé</li>
-											<li>Introduction à la sécurité informatique</li>
-										</ul>
-									</span>
-								</div>
-							</div>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-
-						<article id="contact">
-							<h2 class="major">Contact</h2>
-							<a class="contact" href="https://www.linkedin.com/company/75490897">
-								<i class="fab fa-linkedin-in"></i>
-								 &nbsp; <span class="hacker-text 8" alt="Linkedin">Linkedin</span>
-							</a><br>
-
-							<a class="contact" href="https://twitter.com/trackflaw">
-								<i class="fab fa-twitter"></i> 
-								 &nbsp; <span class="hacker-text 9" alt="Twitter">Twitter</span>
-							</a><br>
-
-							<a class="contact" href="https://github.com/trackflaw">
-								<i class="fab fa-github"></i> 
-								 &nbsp; <span class="hacker-text 10" alt="GitHub">GitHub</span>
-							</a><br>
-
-							<a class="contact"><i class="fas fa-envelope"></i> 
-								&nbsp; <span class="hacker-text 11" alt="contact@trackflaw.com">contact@trackflaw.com</span>
-							</a><br><br>
-
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="https://twitter.com/trackflaw" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.linkedin.com/company/75490897" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/trackflaw" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="/en"><span class="label">EN</span></a></li>
-						</ul>
-						<!-- <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p> -->
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-			
-			<!-- Scripts -->
-			<script src="/assets/js/typed.js"></script>
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-	</body>
+                  <p>Grâce à des méthodologies strictes et à des exigences de travail rigoureuses, Trackflaw s'engage à fournir des livrables clairs et professionnels compréhensibles par un public hautement managérial comme par des acteurs très techniques.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-7 col-md-8 col-lg-6 col-lg-offset-1">
+                <div class="callout-text font-alt">
+                  <h3 class="callout-title"><span class="icon-quote"></span> L'attaque est la meilleure défense</h3>
+                  <p>L'approche offensive des audits techniques permet de déceler les faiblesses pouvant être exploités par un acteur malveillant. En connaissant vos failles, vous renforcez vos défenses.</p>
+                </div>
+              </div>
+              <div class="col-sm-5 col-md-4 col-lg-2">
+                <div class="callout-btn-box"><a class="btn btn-lg btn-w btn-round" href="portfolio_boxed_gutter_col_3.html"><lord-icon
+                  src="https://cdn.lordicon.com/stxtcyyo.json"
+                  trigger="morph"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="a.btn.btn-w.btn-round"
+                ></lord-icon> Consulter nos offres</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module" id="team">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="module-title font-alt">Notre (toute) petite équipe</h2>
+                <div class="module-subtitle">Trackflaw est composé (pour le moment) d'un seul membre : Thibaud ROBIN. Avec plus de 5 ans dans le domaine de la sécurité offensive, Thibaud est à l'aise dans les différents audits techniques offensifs. Certifié OSCP, il réalise des veilles très fréquentes afin de consolider ses compétences techniques.</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-4" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="images/thibaud.jpeg" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Th1b4ud</h5>
+                      <p>Thibaud ROBIN alias Th1b4ud est le CEO de Trackflaw</p>
+                      <div class="team-social"><a href="https://twitter.com/th1b4ud"><i class="fa fa-twitter"></i></a><a href="https://fr.linkedin.com/in/thibaud-robin"><i class="fa fa-linkedin"></i></a></div>
+                    </div>
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Thibaud ROBIN</div>
+                    <div class="team-role">CEO & CTO</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module-small bg-dark2">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="callout-btn-box"><a class="btn btn-lg btn-round btn-primary" href="portfolio_boxed_gutter_col_3.html"><lord-icon
+                  src="https://cdn.lordicon.com/hjeefwhm.json"
+                  trigger="morph"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="a.btn.btn-round.btn-primary"
+                ></lord-icon> Consulter nos engagements</a></div>
+              </div>
+              <div class="col-sm-7 text-right">
+                <div class="callout-text font-alt">
+                  <h3 class="callout-title">Pourquoi choisir Trackflaw ?</h3>
+                  <p>Le marché de la sécurité offensive et plus précisément celui du test d'intrusion est un domaine très compétitif. Trackflaw se positionne en s'appuyant sur une organisation et une méthodologie pointue et exigeante afin de garantir un haut niveau de qualité.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4 class="font-alt mb-30">Frequently Asked Questions</h4>
+                <div class="panel-group" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title font-alt"><a data-toggle="collapse" data-parent="#accordion" href="#support1">Support Question 1</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse in" id="support1">
+                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#support2">Support Question 2</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="support2">
+                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#support3">Support Question 3</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="support3">
+                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title font-alt"><a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#support4">Support Question 4</a></h4>
+                    </div>
+                    <div class="panel-collapse collapse" id="support4">
+                      <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <h4 class="font-alt mb-30">Our Expertises</h4>
+                <h6 class="font-alt"><span class="icon-tools-2"></span> Development
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-strategy"></span> Branding
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="80" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-target"></span> Marketing
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="50" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-camera"></span> Photography
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="90" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-pencil"></span> Designing
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="70" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+                <h6 class="font-alt"><span class="icon-lifesaver"></span> Dedication
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar pb-dark" aria-valuenow="100" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module bg-dark-60 pt-0 pb-0 parallax-bg testimonial" data-background="assets/images/testimonial_bg.jpg">
+          <div class="testimonials-slider pt-140 pb-140">
+            <ul class="slides">
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt">I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title">Jack Woods</div>
+                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt">I should be incapable of drawing a single stroke at the present moment; and yet I feel that I never was a greater artist than now.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title">Jim Stone</div>
+                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="module-icon"><span class="icon-quote"></span></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                      <blockquote class="testimonial-text font-alt">I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my talents.</blockquote>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4 col-sm-offset-4">
+                      <div class="testimonial-author">
+                        <div class="testimonial-caption font-alt">
+                          <div class="testimonial-title">Adele Snow</div>
+                          <div class="testimonial-descr">SomeCompany INC, CEO</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="module" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Contact us</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <form id="contactForm" role="form" method="post" action="php/contact.php">
+                  <div class="form-group">
+                    <label class="sr-only" for="name">Name</label>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Your Name*" required="required" data-validation-required-message="Please enter your name."/>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Your Email*" required="required" data-validation-required-message="Please enter your email address."/>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="7" id="message" name="message" placeholder="Your Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Submit</button>
+                  </div>
+                </form>
+                <div class="ajax-response font-alt" id="contactFormResponse"></div>
+              </div>
+              <div class="col-sm-4">
+                <div class="alt-features-item mt-0">
+                  <div class="alt-features-icon"><span class="icon-megaphone"></span></div>
+                  <h3 class="alt-features-title font-alt">Where to meet</h3>Titan Company<br/>23 Greate Street<br/>Los Angeles, 12345 LS
+                </div>
+                <div class="alt-features-item mt-xs-60">
+                  <div class="alt-features-icon"><span class="icon-map"></span></div>
+                  <h3 class="alt-features-title font-alt">Say Hello</h3>Email: somecompany@example.com<br/>Phone: +1 234 567 89 10
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">About Titan</h5>
+                  <p>The languages only differ in their grammar, their pronunciation and their most common words.</p>
+                  <p>Phone: +1 234 567 89 10</p>Fax: +1 234 567 89 10
+                  <p>Email:<a href="#">somecompany@example.com</a></p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Recent Comments</h5>
+                  <ul class="icon-list">
+                    <li>Maria on <a href="#">Designer Desk Essentials</a></li>
+                    <li>John on <a href="#">Realistic Business Card Mockup</a></li>
+                    <li>Andy on <a href="#">Eco bag Mockup</a></li>
+                    <li>Jack on <a href="#">Bottle Mockup</a></li>
+                    <li>Mark on <a href="#">Our trip to the Alps</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Blog Categories</h5>
+                  <ul class="icon-list">
+                    <li><a href="#">Photography - 7</a></li>
+                    <li><a href="#">Web Design - 3</a></li>
+                    <li><a href="#">Illustration - 12</a></li>
+                    <li><a href="#">Marketing - 1</a></li>
+                    <li><a href="#">Wordpress - 16</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Popular Posts</h5>
+                  <ul class="widget-posts">
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="#"><img src="assets/images/rp-1.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="#">Designer Desk Essentials</a></div>
+                        <div class="widget-posts-meta">23 january</div>
+                      </div>
+                    </li>
+                    <li class="clearfix">
+                      <div class="widget-posts-image"><a href="#"><img src="assets/images/rp-2.jpg" alt="Post Thumbnail"/></a></div>
+                      <div class="widget-posts-body">
+                        <div class="widget-posts-title"><a href="#">Realistic Business Card Mockup</a></div>
+                        <div class="widget-posts-meta">15 February</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-d">
+        <footer class="footer bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="copyright font-alt">&copy; 2017&nbsp;<a href="index.html">TitaN</a>, All Rights Reserved</p>
+              </div>
+              <div class="col-sm-6">
+                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+    <!--  
+    JavaScripts
+    =============================================
+    -->
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+    <script src="assets/lib/jquery/dist/jquery.js"></script>
+    <script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/lib/wow/dist/wow.js"></script>
+    <script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+    <script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
+    <script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="assets/lib/flexslider/jquery.flexslider.js"></script>
+    <script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="assets/lib/smoothscroll.js"></script>
+    <script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

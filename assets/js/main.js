@@ -1,455 +1,851 @@
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55');
 
-(function ($) {
-  var $window = $(window),
-    $body = $("body"),
-    $wrapper = $("#wrapper"),
-    $header = $("#header"),
-    $footer = $("#footer"),
-    $main = $("#main"),
-    $main_articles = $main.children("article");
-
-  // Breakpoints.
-  breakpoints({
-    xlarge: ["1281px", "1680px"],
-    large: ["981px", "1280px"],
-    medium: ["737px", "980px"],
-    small: ["481px", "736px"],
-    xsmall: ["361px", "480px"],
-    xxsmall: [null, "360px"],
-  });
-
-  // Play initial animations on page load.
-  $window.on("load", function () {
-    window.setTimeout(function () {
-      $body.removeClass("is-preload");
-    }, 100);
-  });
-
-  // Fix: Flexbox min-height bug on IE.
-  if (browser.name == "ie") {
-    var flexboxFixTimeoutId;
-
-    $window
-      .on("resize.flexbox-fix", function () {
-        clearTimeout(flexboxFixTimeoutId);
-
-        flexboxFixTimeoutId = setTimeout(function () {
-          if ($wrapper.prop("scrollHeight") > $window.height())
-            $wrapper.css("height", "auto");
-          else $wrapper.css("height", "100vh");
-        }, 250);
-      })
-      .triggerHandler("resize.flexbox-fix");
-  }
-
-  // Nav.
-  var $nav = $header.children("nav"),
-    $nav_li = $nav.find("li");
-
-  // Add "middle" alignment classes if we're dealing with an even number of items.
-  if ($nav_li.length % 2 == 0) {
-    $nav.addClass("use-middle");
-    $nav_li.eq($nav_li.length / 2).addClass("is-middle");
-  }
-
-  // Main.
-  var delay = 325,
-    locked = false;
-
-  // Methods.
-  $main._show = function (id, initial) {
-    var $article = $main_articles.filter("#" + id);
-
-    // No such article? Bail.
-    if ($article.length == 0) return;
-
-    // Handle lock.
-
-    // Already locked? Speed through "show" steps w/o delays.
-    if (locked || (typeof initial != "undefined" && initial === true)) {
-      // Mark as switching.
-      $body.addClass("is-switching");
-
-      // Mark as visible.
-      $body.addClass("is-article-visible");
-
-      // Deactivate all articles (just in case one's already active).
-      $main_articles.removeClass("active");
-
-      // Hide header, footer.
-      $header.hide();
-      $footer.hide();
-
-      // Show main, article.
-      $main.show();
-      $article.show();
-
-      // Activate article.
-      $article.addClass("active");
-
-      // Unlock.
-      locked = false;
-
-      // Unmark as switching.
-      setTimeout(
-        function () {
-          $body.removeClass("is-switching");
-        },
-        initial ? 1000 : 0
-      );
-
-      return;
-    }
-
-    // Lock.
-    locked = true;
-
-    // Article already visible? Just swap articles.
-    if ($body.hasClass("is-article-visible")) {
-      // Deactivate current article.
-      var $currentArticle = $main_articles.filter(".active");
-
-      $currentArticle.removeClass("active");
-
-      // Show article.
-      setTimeout(function () {
-        // Hide current article.
-        $currentArticle.hide();
-
-        // Show article.
-        $article.show();
-
-        // Activate article.
-        setTimeout(function () {
-          $article.addClass("active");
-
-          // Window stuff.
-          $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
-
-          // Unlock.
-          setTimeout(function () {
-            locked = false;
-          }, delay);
-        }, 25);
-      }, delay);
-    }
-
-    // Otherwise, handle as normal.
-    else {
-      // Mark as visible.
-      $body.addClass("is-article-visible");
-
-      // Show article.
-      setTimeout(function () {
-        // Hide header, footer.
-        $header.hide();
-        $footer.hide();
-
-        // Show main, article.
-        $main.show();
-        $article.show();
-
-        // Activate article.
-        setTimeout(function () {
-          $article.addClass("active");
-
-          // Window stuff.
-          $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
-
-          // Unlock.
-          setTimeout(function () {
-            locked = false;
-          }, delay);
-        }, 25);
-      }, delay);
-    }
-  };
-
-  $main._hide = function (addState) {
-    var $article = $main_articles.filter(".active");
-
-    // Article not visible? Bail.
-    if (!$body.hasClass("is-article-visible")) return;
-
-    // Add state?
-    if (typeof addState != "undefined" && addState === true)
-      history.pushState(null, null, "#");
-
-    // Handle lock.
-
-    // Already locked? Speed through "hide" steps w/o delays.
-    if (locked) {
-      // Mark as switching.
-      $body.addClass("is-switching");
-
-      // Deactivate article.
-      $article.removeClass("active");
-
-      // Hide article, main.
-      $article.hide();
-      $main.hide();
-
-      // Show footer, header.
-      $footer.show();
-      $header.show();
-
-      // Unmark as visible.
-      $body.removeClass("is-article-visible");
-
-      // Unlock.
-      locked = false;
-
-      // Unmark as switching.
-      $body.removeClass("is-switching");
-
-      // Window stuff.
-      $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
-
-      return;
-    }
-
-    // Lock.
-    locked = true;
-
-    // Deactivate article.
-    $article.removeClass("active");
-
-    // Hide article.
-    setTimeout(function () {
-      // Hide article, main.
-      $article.hide();
-      $main.hide();
-
-      // Show footer, header.
-      $footer.show();
-      $header.show();
-
-      // Unmark as visible.
-      setTimeout(function () {
-        $body.removeClass("is-article-visible");
-
-        // Window stuff.
-        $window.scrollTop(0).triggerHandler("resize.flexbox-fix");
-
-        // Unlock.
-        setTimeout(function () {
-          locked = false;
-        }, delay);
-      }, 25);
-    }, delay);
-  };
-
-  // Articles.
-  $main_articles.each(function () {
-    var $this = $(this);
-
-    // Close.
-    $('<div class="close">Close</div>')
-      .appendTo($this)
-      .on("click", function () {
-        location.hash = "";
-      });
-
-    // Close2.
-    $('<div class="close2" id="close2"></div>')
-      .appendTo($this)
-      .on("click", function () {
-        location.hash = "";
-      });
-
-    // Prevent clicks from inside article from bubbling.
-    $this.on("click", function (event) {
-      event.stopPropagation();
+/* ---------------------------------------------- /*
+ * Preloader
+ /* ---------------------------------------------- */
+(function(){
+    $(window).on('load', function() {
+        $('.loader').fadeOut();
+        $('.page-loader').delay(350).fadeOut('slow');
     });
-  });
 
-  // Events.
-  $body.on("click", function (event) {
-    // Article visible? Hide.
-    if ($body.hasClass("is-article-visible")) $main._hide(true);
-  });
+    $(document).ready(function() {
 
-  $window.on("keyup", function (event) {
-    switch (event.keyCode) {
-      case 27:
-        // Article visible? Hide.
-        if ($body.hasClass("is-article-visible")) $main._hide(true);
+        /* ---------------------------------------------- /*
+         * WOW Animation When You Scroll
+         /* ---------------------------------------------- */
 
-        break;
+        wow = new WOW({
+            mobile: false
+        });
+        wow.init();
 
-      default:
-        break;
-    }
-  });
 
-  $window.on("hashchange", function (event) {
-    // Empty hash?
-    if (location.hash == "" || location.hash == "#") {
-      // Prevent default.
-      event.preventDefault();
-      event.stopPropagation();
+        /* ---------------------------------------------- /*
+         * Scroll top
+         /* ---------------------------------------------- */
 
-      // Hide.
-      $main._hide();
-    }
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.scroll-up').fadeIn();
+            } else {
+                $('.scroll-up').fadeOut();
+            }
+        });
 
-    // Otherwise, check for a matching article.
-    else if ($main_articles.filter(location.hash).length > 0) {
-      // Prevent default.
-      event.preventDefault();
-      event.stopPropagation();
+        $('a[href="#totop"]').click(function() {
+            $('html, body').animate({ scrollTop: 0 }, 'slow');
+            return false;
+        });
 
-      // Show article.
-      $main._show(location.hash.substr(1));
 
-      for (let index = 0; index < words.length; index++) {
-        launch_animated_text(words[index], original_words[index]);
-      }
-    }
-  });
+        /* ---------------------------------------------- /*
+         * Initialization General Scripts for all pages
+         /* ---------------------------------------------- */
 
-  // Scroll restoration.
-  // This prevents the page from scrolling back to the top on a hashchange.
-  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  else {
-    var oldScrollPos = 0,
-      scrollPos = 0,
-      $htmlbody = $("html,body");
+        var homeSection = $('.home-section'),
+            navbar      = $('.navbar-custom'),
+            navHeight   = navbar.height(),
+            worksgrid   = $('#works-grid'),
+            width       = Math.max($(window).width(), window.innerWidth),
+            mobileTest  = false;
 
-    $window
-      .on("scroll", function () {
-        oldScrollPos = scrollPos;
-        scrollPos = $htmlbody.scrollTop();
-      })
-      .on("hashchange", function () {
-        $window.scrollTop(oldScrollPos);
-      });
-  }
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            mobileTest = true;
+        }
 
-  // Initialize.
+        buildHomeSection(homeSection);
+        navbarAnimation(navbar, homeSection, navHeight);
+        navbarSubmenu(width);
+        hoverDropdown(width, mobileTest);
 
-  // Hide main, articles.
-  $main.hide();
-  $main_articles.hide();
+        $(window).resize(function() {
+            var width = Math.max($(window).width(), window.innerWidth);
+            buildHomeSection(homeSection);
+            hoverDropdown(width, mobileTest);
+        });
 
-  // Initial article.
-  if (location.hash != "" && location.hash != "#")
-    $window.on("load", function () {
-      $main._show(location.hash.substr(1), true);
+        $(window).scroll(function() {
+            effectsHomeSection(homeSection, this);
+            navbarAnimation(navbar, homeSection, navHeight);
+        });
+
+        /* ---------------------------------------------- /*
+         * Set sections backgrounds
+         /* ---------------------------------------------- */
+
+        var module = $('.home-section, .module, .module-small, .side-image');
+        module.each(function(i) {
+            if ($(this).attr('data-background')) {
+                $(this).css('background-image', 'url(' + $(this).attr('data-background') + ')');
+            }
+        });
+
+        /* ---------------------------------------------- /*
+         * Home section height
+         /* ---------------------------------------------- */
+
+        function buildHomeSection(homeSection) {
+            if (homeSection.length > 0) {
+                if (homeSection.hasClass('home-full-height')) {
+                    homeSection.height($(window).height());
+                } else {
+                    homeSection.height($(window).height() * 0.85);
+                }
+            }
+        }
+
+
+        /* ---------------------------------------------- /*
+         * Home section effects
+         /* ---------------------------------------------- */
+
+        function effectsHomeSection(homeSection, scrollTopp) {
+            if (homeSection.length > 0) {
+                var homeSHeight = homeSection.height();
+                var topScroll = $(document).scrollTop();
+                if ((homeSection.hasClass('home-parallax')) && ($(scrollTopp).scrollTop() <= homeSHeight)) {
+                    homeSection.css('top', (topScroll * 0.55));
+                }
+                if (homeSection.hasClass('home-fade') && ($(scrollTopp).scrollTop() <= homeSHeight)) {
+                    var caption = $('.caption-content');
+                    caption.css('opacity', (1 - topScroll/homeSection.height() * 1));
+                }
+            }
+        }
+
+        /* ---------------------------------------------- /*
+         * Intro slider setup
+         /* ---------------------------------------------- */
+
+        if( $('.hero-slider').length > 0 ) {
+            $('.hero-slider').flexslider( {
+                animation: "fade",
+                animationSpeed: 1000,
+                animationLoop: true,
+                prevText: '',
+                nextText: '',
+                before: function(slider) {
+                    $('.titan-caption').fadeOut().animate({top:'-80px'},{queue:false, easing: 'swing', duration: 700});
+                    slider.slides.eq(slider.currentSlide).delay(500);
+                    slider.slides.eq(slider.animatingTo).delay(500);
+                },
+                after: function(slider) {
+                    $('.titan-caption').fadeIn().animate({top:'0'},{queue:false, easing: 'swing', duration: 700});
+                },
+                useCSS: true
+            });
+        }
+
+
+        /* ---------------------------------------------- /*
+         * Rotate
+         /* ---------------------------------------------- */
+
+        $(".rotate").textrotator({
+            animation: "dissolve",
+            separator: "|",
+            speed: 3000
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Transparent navbar animation
+         /* ---------------------------------------------- */
+
+        function navbarAnimation(navbar, homeSection, navHeight) {
+            var topScroll = $(window).scrollTop();
+            if (navbar.length > 0 && homeSection.length > 0) {
+                if(topScroll >= navHeight) {
+                    navbar.removeClass('navbar-transparent');
+                } else {
+                    navbar.addClass('navbar-transparent');
+                }
+            }
+        }
+
+        /* ---------------------------------------------- /*
+         * Navbar submenu
+         /* ---------------------------------------------- */
+
+        function navbarSubmenu(width) {
+            if (width > 767) {
+                $('.navbar-custom .navbar-nav > li.dropdown').hover(function() {
+                    var MenuLeftOffset  = $('.dropdown-menu', $(this)).offset().left;
+                    var Menu1LevelWidth = $('.dropdown-menu', $(this)).width();
+                    if (width - MenuLeftOffset < Menu1LevelWidth * 2) {
+                        $(this).children('.dropdown-menu').addClass('leftauto');
+                    } else {
+                        $(this).children('.dropdown-menu').removeClass('leftauto');
+                    }
+                    if ($('.dropdown', $(this)).length > 0) {
+                        var Menu2LevelWidth = $('.dropdown-menu', $(this)).width();
+                        if (width - MenuLeftOffset - Menu1LevelWidth < Menu2LevelWidth) {
+                            $(this).children('.dropdown-menu').addClass('left-side');
+                        } else {
+                            $(this).children('.dropdown-menu').removeClass('left-side');
+                        }
+                    }
+                });
+            }
+        }
+
+        /* ---------------------------------------------- /*
+         * Navbar hover dropdown on desctop
+         /* ---------------------------------------------- */
+
+        function hoverDropdown(width, mobileTest) {
+            if ((width > 767) && (mobileTest !== true)) {
+                $('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').removeClass('open');
+                var delay = 0;
+                var setTimeoutConst;
+                $('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').hover(function() {
+                        var $this = $(this);
+                        setTimeoutConst = setTimeout(function() {
+                            $this.addClass('open');
+                            $this.find('.dropdown-toggle').addClass('disabled');
+                        }, delay);
+                    },
+                    function() {
+                        clearTimeout(setTimeoutConst);
+                        $(this).removeClass('open');
+                        $(this).find('.dropdown-toggle').removeClass('disabled');
+                    });
+            } else {
+                $('.navbar-custom .navbar-nav > li.dropdown, .navbar-custom li.dropdown > ul > li.dropdown').unbind('mouseenter mouseleave');
+                $('.navbar-custom [data-toggle=dropdown]').not('.binded').addClass('binded').on('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(this).parent().siblings().removeClass('open');
+                    $(this).parent().siblings().find('[data-toggle=dropdown]').parent().removeClass('open');
+                    $(this).parent().toggleClass('open');
+                });
+            }
+        }
+
+        /* ---------------------------------------------- /*
+         * Navbar collapse on click
+         /* ---------------------------------------------- */
+
+        $(document).on('click','.navbar-collapse.in',function(e) {
+            if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
+                $(this).collapse('hide');
+            }
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Video popup, Gallery
+         /* ---------------------------------------------- */
+
+        $('.video-pop-up').magnificPopup({
+            type: 'iframe'
+        });
+
+        $(".gallery-item").magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0,1]
+            },
+            image: {
+                titleSrc: 'title',
+                tError: 'The image could not be loaded.'
+            }
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Portfolio
+         /* ---------------------------------------------- */
+
+        var worksgrid   = $('#works-grid'),
+            worksgrid_mode;
+
+        if (worksgrid.hasClass('works-grid-masonry')) {
+            worksgrid_mode = 'masonry';
+        } else {
+            worksgrid_mode = 'fitRows';
+        }
+
+        worksgrid.imagesLoaded(function() {
+            worksgrid.isotope({
+                layoutMode: worksgrid_mode,
+                itemSelector: '.work-item'
+            });
+        });
+
+        $('#filters a').click(function() {
+            $('#filters .current').removeClass('current');
+            $(this).addClass('current');
+            var selector = $(this).attr('data-filter');
+
+            worksgrid.isotope({
+                filter: selector,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+
+            return false;
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Testimonials
+         /* ---------------------------------------------- */
+
+        if ($('.testimonials-slider').length > 0 ) {
+            $('.testimonials-slider').flexslider( {
+                animation: "slide",
+                smoothHeight: true
+            });
+        }
+
+
+        /* ---------------------------------------------- /*
+         * Post Slider
+         /* ---------------------------------------------- */
+
+        if ($('.post-images-slider').length > 0 ) {
+            $('.post-images-slider').flexslider( {
+                animation: "slide",
+                smoothHeight: true,
+            });
+        }
+
+
+        /* ---------------------------------------------- /*
+         * Progress bar animations
+         /* ---------------------------------------------- */
+
+        $('.progress-bar').each(function(i) {
+            $(this).appear(function() {
+                var percent = $(this).attr('aria-valuenow');
+                $(this).animate({'width' : percent + '%'});
+                $(this).find('span').animate({'opacity' : 1}, 900);
+                $(this).find('span').countTo({from: 0, to: percent, speed: 900, refreshInterval: 30});
+            });
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Funfact Count-up
+         /* ---------------------------------------------- */
+
+        $('.count-item').each(function(i) {
+            $(this).appear(function() {
+                var number = $(this).find('.count-to').data('countto');
+                $(this).find('.count-to').countTo({from: 0, to: number, speed: 1200, refreshInterval: 30});
+            });
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Youtube video background
+         /* ---------------------------------------------- */
+
+        $(function(){
+            $(".video-player").mb_YTPlayer();
+        });
+
+        $('#video-play').click(function(event) {
+            event.preventDefault();
+            if ($(this).hasClass('fa-play')) {
+                $('.video-player').playYTP();
+            } else {
+                $('.video-player').pauseYTP();
+            }
+            $(this).toggleClass('fa-play fa-pause');
+            return false;
+        });
+
+        $('#video-volume').click(function(event) {
+            event.preventDefault();
+            if ($(this).hasClass('fa-volume-off')) {
+                $('.video-player').YTPUnmute();
+            } else {
+                $('.video-player').YTPMute();
+            }
+            $(this).toggleClass('fa-volume-off fa-volume-up');
+            return false;
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Owl Carousel
+         /* ---------------------------------------------- */
+
+        $('.owl-carousel').each(function(i) {
+
+            // Check items number
+            if ($(this).data('items') > 0) {
+                items = $(this).data('items');
+            } else {
+                items = 4;
+            }
+
+            // Check pagination true/false
+            if (($(this).data('pagination') > 0) && ($(this).data('pagination') === true)) {
+                pagination = true;
+            } else {
+                pagination = false;
+            }
+
+            // Check navigation true/false
+            if (($(this).data('navigation') > 0) && ($(this).data('navigation') === true)) {
+                navigation = true;
+            } else {
+                navigation = false;
+            }
+
+            // Build carousel
+            $(this).owlCarousel( {
+                navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+                nav: navigation,
+                dots: pagination,
+                loop: true,
+                dotsSpeed: 400,
+                items: items,
+                navSpeed: 300,
+                autoplay: 2000
+            });
+
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Blog masonry
+         /* ---------------------------------------------- */
+
+        $('.post-masonry').imagesLoaded(function() {
+            $('.post-masonry').masonry();
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Scroll Animation
+         /* ---------------------------------------------- */
+
+        $('.section-scroll').bind('click', function(e) {
+            var anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(anchor.attr('href')).offset().top - 50
+            }, 1000);
+            e.preventDefault();
+        });
+
+        /*===============================================================
+         Working Contact Form
+         ================================================================*/
+
+        $("#contactForm").submit(function (e) {
+
+            e.preventDefault();
+            var $ = jQuery;
+
+            var postData = $(this).serializeArray(),
+                formURL = $(this).attr("action"),
+                $cfResponse = $('#contactFormResponse'),
+                $cfsubmit = $("#cfsubmit"),
+                cfsubmitText = $cfsubmit.text();
+
+            $cfsubmit.text("Sending...");
+
+
+            $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data) {
+                        $cfResponse.html(data);
+                        $cfsubmit.text(cfsubmitText);
+                        $('#contactForm input[name=name]').val('');
+                        $('#contactForm input[name=email]').val('');
+                        $('#contactForm textarea[name=message]').val('');
+                    },
+                    error: function (data) {
+                        alert("Error occurd! Please try again");
+                    }
+                });
+
+            return false;
+
+        });
+
+
+        /*===============================================================
+         Working Request A Call Form
+         ================================================================*/
+
+        $("#requestACall").submit(function (e) {
+
+            e.preventDefault();
+            var $ = jQuery;
+
+            var postData = $(this).serializeArray(),
+                formURL = $(this).attr("action"),
+                $cfResponse = $('#requestFormResponse'),
+                $cfsubmit = $("#racSubmit"),
+                cfsubmitText = $cfsubmit.text();
+
+            $cfsubmit.text("Sending...");
+
+
+            $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data) {
+                        $cfResponse.html(data);
+                        $cfsubmit.text(cfsubmitText);
+                        $('#requestACall input[name=name]').val('');
+                        $('#requestACall input[name=subject]').val('');
+                        $('#requestACall textarea[name=phone]').val('');
+                    },
+                    error: function (data) {
+                        alert("Error occurd! Please try again");
+                    }
+                });
+
+            return false;
+
+        });
+
+
+        /*===============================================================
+         Working Reservation Form
+         ================================================================*/
+
+        $("#reservationForm").submit(function (e) {
+
+            e.preventDefault();
+            var $ = jQuery;
+
+            var postData = $(this).serializeArray(),
+                formURL = $(this).attr("action"),
+                $cfResponse = $('#reservationFormResponse'),
+                $cfsubmit = $("#rfsubmit"),
+                cfsubmitText = $cfsubmit.text();
+
+            $cfsubmit.text("Sending...");
+
+
+            $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data) {
+                        $cfResponse.html(data);
+                        $cfsubmit.text(cfsubmitText);
+                        $('#reservationForm input[name=date]').val('');
+                        $('#reservationForm input[name=time]').val('');
+                        $('#reservationForm textarea[name=people]').val('');
+                        $('#reservationForm textarea[name=email]').val('');
+                    },
+                    error: function (data) {
+                        alert("Error occurd! Please try again");
+                    }
+                });
+
+            return false;
+
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Subscribe form ajax
+         /* ---------------------------------------------- */
+
+        $('#subscription-form').submit(function(e) {
+
+            e.preventDefault();
+            var $form           = $('#subscription-form');
+            var submit          = $('#subscription-form-submit');
+            var ajaxResponse    = $('#subscription-response');
+            var email           = $('input#semail').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'assets/php/subscribe.php',
+                dataType: 'json',
+                data: {
+                    email: email
+                },
+                cache: false,
+                beforeSend: function(result) {
+                    submit.empty();
+                    submit.append('<i class="fa fa-cog fa-spin"></i> Wait...');
+                },
+                success: function(result) {
+                    if(result.sendstatus == 1) {
+                        ajaxResponse.html(result.message);
+                        $form.fadeOut(500);
+                    } else {
+                        ajaxResponse.html(result.message);
+                    }
+                }
+            });
+
+        });
+
+
+        /* ---------------------------------------------- /*
+         * Google Map
+         /* ---------------------------------------------- */
+
+        if($("#map").length == 0 || typeof google == 'undefined') return;
+
+        // When the window has finished loading create our google map below
+        google.maps.event.addDomListener(window, 'load', init);
+
+        var mkr = new google.maps.LatLng(40.6700, -74.2000);
+        var cntr = (mobileTest) ? mkr : new google.maps.LatLng(40.6700, -73.9400);
+
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 11,
+                scrollwheel: false,
+                // The latitude and longitude to center the map (always required)
+                center: cntr, // New York
+
+                // How you would like to style the map.
+                // This is where you would paste any style found on Snazzy Maps.
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "saturation": "-11"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "saturation": "22"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                            {
+                                "saturation": "-58"
+                            },
+                            {
+                                "color": "#cfcece"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#f8f8f8"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#999999"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.country",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#f9f9f9"
+                            },
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#f2f2f2"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "saturation": "-19"
+                            },
+                            {
+                                "lightness": "-2"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "saturation": -100
+                            },
+                            {
+                                "lightness": 45
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "color": "#d8e1e5"
+                            },
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#dedede"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#cbcbcb"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#9c9c9c"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Get the HTML DOM element that will contain your map
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('map');
+
+            // Create the Google Map using our element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+            // Let's also add a marker while we're at it
+            var image = new google.maps.MarkerImage('assets/images/map-icon.png',
+                new google.maps.Size(59, 65),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(24, 42)
+            );
+
+            var marker = new google.maps.Marker({
+                position: mkr,
+                icon: image,
+                title: 'Titan',
+                infoWindow: {
+                    content: '<p><strong>Rival</strong><br/>121 Somewhere Ave, Suite 123<br/>P: (123) 456-7890<br/>Australia</p>'
+                },
+                map: map,
+            });
+        }
+
     });
 })(jQuery);
 
-/* Typed js */
 
-setTimeout(() => {
-  var typed = new Typed(".terminal", {
-    strings: ["Full overall pentesting "],
-    typeSpeed: 160,
-    cursorChar: "_",
-  });
-}, 600);
-
-/* Hacker text */
-
-function rand(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-function getRandomLetter() {
-  var result = "";
-  var characters =
-    "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&()*+,-./:;<=>?@[\\]^_`{|}~";
-  var charactersLength = characters.length;
-  for (var i = 0; i < 1; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-
-  console.log(result);
-}
-
-function getRandomWord(word) {
-  var text = word.innerHTML;
-
-  var finalWord = "";
-  for (var i = 0; i < text.length; i++) {
-    finalWord += text[i] == " " ? " " : getRandomLetter();
-  }
-
-  return finalWord;
-}
-
-original_words = []
-
-$(".hacker-text").each(function(){
-  var imageAlt = $(this).attr("alt");
-  original_words.push(imageAlt);
-});
-
-words = document.querySelectorAll(".hacker-text");
-
-function launch_animated_text(word, original_word) {
-  var interv = "undefined";
-  var canChange = false;
-  var globalCount = 0;
-  var count = 0;
-  var INITIAL_WORD = original_word;
-  var isGoing = false;
-
-  if (isGoing) return;
-
-  isGoing = true;
-  var randomWord = getRandomWord(word);
-  word.innerHTML = randomWord;
-
-  interv = setInterval(function () {
-    var finalWord = "";
-    for (var x = 0; x < INITIAL_WORD.length; x++) {
-      if (x <= count && canChange) {
-        finalWord += INITIAL_WORD[x];
-      } else {
-        finalWord += getRandomLetter();
-      }
-    }
-    word.innerHTML = finalWord;
-    if (canChange) {
-      count++;
-    }
-    if (globalCount >= 20) {
-      canChange = true;
-    }
-    if (count >= INITIAL_WORD.length) {
-      clearInterval(interv);
-      count = 0;
-      canChange = false;
-      globalCount = 0;
-      isGoing = false;
-    }
-    globalCount++;
-  }, 70);
-}
-
-// for (let index = 0; index < words.length; index++) {
-//   words[index].addEventListener("mouseover", () => {
-//     launch_animated_text(words[index]);
-//   });
-// }
-
-//
-// Back to top
-//
-
-var btn = $("div#close2");
-btn.hide();
-
-$(window).scroll(function () {
-  if ($(window).scrollTop() > 300) {
-    btn.show();
-  } else {
-    btn.hide();
-  }
-});
