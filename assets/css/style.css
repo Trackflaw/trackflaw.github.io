@@ -6,6 +6,15 @@
 
 /* Overwrite */
 
+p {
+  font-size: 14px;
+}
+
+.btn {
+  white-space:normal !important;
+  word-wrap: break-word; 
+}
+
 .section-scroll.btn.btn-border-w.btn-circle {
   font-size: 1.3em;
 }
@@ -269,11 +278,11 @@ a,
 .bg-dark-30 .alt-module-subtitle h5,
 .bg-dark-60 .alt-module-subtitle h5,
 .bg-dark-90 .alt-module-subtitle h5 {
-  color: rgb(31, 29, 29);
+  color: rgb(228, 228, 228);
 }
 
 .bg-dark {
-  background: #303b44
+  background: #2C3A47
 }
 
 .bg-dark2 {
@@ -1546,6 +1555,11 @@ General Styles - Owlcarousel
   margin: 0;
 }
 
+.footer .copyright a {
+  color: #fff;
+}
+
+
 .footer .footer-social-links {
   text-align: right;
 }
@@ -2074,6 +2088,7 @@ Google map
 .callout-btn-box {
   text-align: right;
   padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .request-cta {
@@ -2291,6 +2306,7 @@ Google map
 .progress {
   overflow: visible;
   height: 4px;
+  margin-bottom: 50px;
 }
 
 .progress-bar {
@@ -2301,6 +2317,22 @@ Google map
   background: #111;
 }
 
+.progress-bar.pb-red {
+  background: #e55039
+}
+
+.progress-bar.pb-orange {
+  background: #ff9f43
+}
+
+.progress-bar.pb-green {
+  background: #6ab04c
+}
+
+.progress-bar.pb-blue {
+  background: #54a0ff
+}
+
 .progress-bar span {
   position: absolute;
   display: block;
@@ -2309,8 +2341,9 @@ Google map
   opacity: 0;
   line-height: 12px;
   font-size: 12px;
-  color: #111;
+  color: rgb(255, 255, 255);
   padding: 4px 0px;
+  font-weight: 800;
 }
 
 .progress-bar span:after {
