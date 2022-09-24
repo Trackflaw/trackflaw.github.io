@@ -920,7 +920,7 @@ a,
 	Typography
 --------------------------------------------------------------*/
 a {
-  color: #111;
+  color: rgb(255, 255, 255);
 }
 
 a:hover, a:focus {
@@ -1333,11 +1333,21 @@ General Styles - Owlcarousel
   font-weight: 400;
   font-size: 22px;
   color: #fff;
+  padding: 18px 15px!important;
 }
 
 .navbar-custom .nav li > a {
   position: relative;
   color: rgba(255, 255, 255, 0.7);
+  padding-top: 18px!important;
+  padding-bottom: 0px!important;
+}
+
+.navbar-custom .nav li > a.btn {
+  position: relative;
+  color: rgba(255, 255, 255, 0.7);
+  padding-top: 10px!important;
+  padding-bottom: 7px!important;
 }
 
 .navbar-custom .dropdown-menu > li > a {
