@@ -54,6 +54,11 @@ hr {
   color: #fff!important;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
 /*--------------------------------------------------------------
 	Common
 --------------------------------------------------------------*/
@@ -315,6 +320,10 @@ a,
 
 .bg-dark3 {
   background: #0F222D;
+}
+
+.bg-dark4 {
+  background: rgb(19, 57, 80);
 }
 
 .bg-dark-30:before {
@@ -1634,6 +1643,10 @@ Google map
   font-size: 14px;
 }
 
+.features-item p {
+  text-align: left;
+}
+
 .features-icon,
 .alt-features-icon {
   line-height: 1.2;
@@ -1648,7 +1661,9 @@ Google map
   font-weight: 400;
   font-size: 18px;
   color: #fff;
-  margin: 16px 0 15px;
+  margin: 16px 0 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
 }
 
 .alt-features-item {
