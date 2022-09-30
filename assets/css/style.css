@@ -59,6 +59,28 @@ hr {
   margin: 0 auto;
 }
 
+.div-icon-order {
+  padding-top: 70px;
+}
+
+.div-icon-order span {
+  font-size: 70px;
+}
+
+.div-icon-order p {
+  font-size: 16px!important;
+  margin-top: 0!important;
+  font-style: italic;
+  text-align: center!important;
+  padding-top: 20px;
+}
+
+.order-block {
+  background-color: rgba(255,255,255,0.01);
+  border-radius: 5px;
+  padding: 40px;
+}
+
 /*--------------------------------------------------------------
 	Common
 --------------------------------------------------------------*/
@@ -324,6 +346,14 @@ a,
 
 .bg-dark4 {
   background: rgb(19, 57, 80);
+}
+
+.bg-footer1 {
+  background: #283C4B;
+}
+
+.bg-footer2 {
+  background: #1f303d;
 }
 
 .bg-dark-30:before {
@@ -1596,24 +1626,29 @@ General Styles - Owlcarousel
 --------------------------------------------------------------*/
 .footer {
   padding: 10px 0;
+  color: rgba(255, 255, 255, 0.3)!important;
 }
 
 .footer .copyright {
   margin: 0;
+  padding-top: 40px;
 }
 
 .footer .copyright a {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.3)!important;
 }
 
 
 .footer .footer-social-links {
   text-align: right;
+  padding-top: 35px;
+  font-size: 20px;
 }
 
 .footer .footer-social-links a {
   display: inline-block;
   padding: 0 6px;
+  color: rgba(255, 255, 255, 0.3)!important;
 }
 
 /* -------------------------------------------------------------
