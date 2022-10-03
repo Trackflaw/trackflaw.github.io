@@ -1,165 +1,351 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  
+    Document Title
+    =============================================
+    -->
 		<title>Trackflaw | Full overall pentesting</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+    <!--  
+    Favicons
+    =============================================
+    -->
+    <link rel="icon" href="/favicon.ico">
+    <!--  
+    Stylesheets
+    =============================================
+    
+    -->
+    <!-- Default stylesheets-->
+    <link href="/assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="/assets/lib/animate.css/animate.css" rel="stylesheet">
+    <link href="/assets/lib/components-font-awesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="/assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
+    <link href="/assets/lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="/assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="/assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="/assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link id="color-scheme" href="/assets/css/colors/default.css" rel="stylesheet">
+  </head>
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader">
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="/index">Trackflaw</a>
+            <img src="logos/Original-transparent-icone.png" width="40px" style="vertical-align: text-top;">
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/services">Services </a></li>
+              <li><a href="/valeurs">Valeurs & engagements</a></li>
+              <li><a href="/méthodologie">Méthodologie</a></li>
+              <li><a class="btn btn-border-w btn-circle menu" href="/commande"><lord-icon
+                src="https://cdn.lordicon.com/cnyeuzxc.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:15px;height:15px"
+                class="current-color"
+                target="a.btn.btn-border-w.btn-circle.menu"
+              >
+            </lord-icon> &nbsp;Commander</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="home-section home-parallax home-fade home-full-height agency-page-header" id="home" data-background="logos/icone-animated.gif">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <!-- <div class="font-alt mb-40 titan-title-size-3">Full overall <span class="rotate">pentesting | simple | flexible</span> -->
+              <div class="font-alt mb-40 titan-title-size-3">TRACKFLAW
+            <div class="font-alt mb-30 titan-title-size-1">Full overall pentesting</div>
+            </div><a class="section-scroll btn btn-border-w btn-circle" href="#expertise"><lord-icon
+              src="https://cdn.lordicon.com/mecwbjnp.json"
+              trigger="hover"
+              colors="primary:#ffffff"
+              style="width:25px;height:25px"
+              class="current-color"
+              target="a.section-scroll.btn.btn-border-w.btn-circle"
+            >
+          </lord-icon> &nbsp;Découvrir notre expertise</a>
+          </div>
+        </div>
+      </section>
+      <div class="main" id="expertise">
+        <section class="module">
+          <div class="container">
+            <h2 class="module-title font-alt align-center">Expertise</h2>
+            <hr>
+            <div class="row multi-columns-row">
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-target"></span></div>
+                  <h3 class="features-title font-alt">Test d'intrusion</h3><p>A l'aide d'une méticuleuse méthodologie, Trackflaw est en mesure de fournir des prestations de tests d'intrusion afin de relever un maximum de failles de sécurité.</p>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+                  <p>Trackflaw propose plusieurs prestations de tests d'intrusion permettant, notamment, d'évaluer la sécurité de vos actifs web, internes ou encore mobiles.</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-presentation"></span></div>
+                  <h3 class="features-title font-alt">Conseil & formation</h3><p>Trackflaw intervient sur différents sujets de formation liés à la sécurité informatique dans des établissements d'enseignement supérieur, dans des entreprises privées ou des centres de formation spécialisés.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module pt-0 pb-0" id="about">
+          <div class="row position-relative m-0">
+            <div class="col-xs-12 col-md-6 side-image" data-background="logos/Original-slogan.png"></div>
+            <div class="col-xs-12 col-md-6 col-md-offset-6 side-image-text">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h2 class="module-title font-alt align-left" style="margin-bottom: 20px">à propos de nous</h2>
+                  <h2 class="module-title font-alt align-left underline"></h2>
+                  <p><strong>Trackflaw</strong> est une startup spécialisée dans les tests d'intrusion. Son domaine d'expertise varie des tests d'intrusion externes, internes et mobiles aux formations spécialisées en sécurité informatique. En se concentrant uniquement sur les tests d'intrusion, Trackflaw a pour vocation de fournir des prestations de haute technicité afin de garantir l'exhaustivité et la qualité des tests effectués.</p>
 
-				<!-- Header -->
-					<header id="header">
-						
-						<div class="logo">
-							<!-- <span class="icon fa-gem"></span> -->
-							<img class="header-logo" src="/logos/Original-transparent-icone.png">
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1 class="big-title">Trackflaw</h1>
-								<p class="terminal" id="terminal"></p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#about">A propos</a></li>
-								<li><a href="#values">Valeurs</a></li>
-								<li><a href="#team">Equipe</a></li>
-								<li><a href="#services">Services</a></li>
-								<li><a href="#contact">Contact</a></li>
-							</ul>
-						</nav>
-					</header>
+                  <p>Grâce à des méthodologies strictes et à des exigences de travail rigoureuses, Trackflaw s'engage à fournir des livrables clairs et professionnels, compréhensibles par un public hautement managérial comme par des acteurs très techniques.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-7 col-md-8 col-lg-6 col-lg-offset-1">
+                <div class="callout-text font-alt">
+                  <h3 class="callout-title"><span class="icon-quote"></span> L'attaque est la meilleure défense</h3>
+                  <p>L'approche offensive des audits techniques permet de déceler les faiblesses pouvant être exploités par un acteur malveillant. En connaissant vos failles, vous renforcez vos défenses.</p>
+                </div>
+              </div>
+              <div class="col-sm-5 col-md-4 col-lg-4">
+                <div class="callout-btn-box"><a class="btn btn-lg btn-w btn-round" href="/services"><lord-icon
+                  src="https://cdn.lordicon.com/stxtcyyo.json"
+                  trigger="morph"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="a.btn.btn-w.btn-round"
+                ></lord-icon> Consulter nos offres</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module" id="team">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="module-title font-alt">Notre (toute) petite équipe</h2>
+                <hr>
+                <div class="module-subtitle">Trackflaw est composé (pour le moment) d'un seul membre : Thibaud ROBIN. Avec plus de 5 ans dans le domaine de la sécurité offensive, Thibaud est à l'aise dans les différents audits techniques offensifs. Certifié OSCP, il réalise des veilles très fréquentes afin de consolider ses compétences techniques.</div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: center" class="row">
+              <div class="col-sm-3" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="images/thibaud.jpeg" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Th1b4ud</h5>
+                      <p>Thibaud ROBIN alias Th1b4ud est le CEO de Trackflaw</p>
+                      <div class="team-social"><a href="https://twitter.com/th1b4ud"><i class="fa-brands fa-twitter"></i></a><a href="https://fr.linkedin.com/in/thibaud-robin"><i class="fa-brands fa-linkedin"></i></a></div>
+                    </div>
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Thibaud ROBIN</div>
+                    <div class="team-role">CEO & CTO</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module-small bg-dark2">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-5">
+                <div style="margin-top: 20px;" class="callout-btn-box"><a class="btn btn-lg btn-round btn-primary" href="/valeurs"><lord-icon
+                  src="https://cdn.lordicon.com/hjeefwhm.json"
+                  trigger="hover"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="a.btn.btn-round.btn-primary"
+                ></lord-icon> Les 5 raisons de choisir Trackflaw</a></div>
+              </div>
+              <div class="col-sm-6 text-right">
+                <div class="callout-text font-alt">
+                  <h3 class="callout-title">Pourquoi choisir Trackflaw ?</h3>
+                  <p>Le marché de la sécurité offensive et plus précisément celui du test d'intrusion est un domaine très compétitif. Trackflaw se positionne en s'appuyant sur une organisation et une méthodologie pointue et exigeante afin de garantir un haut niveau de qualité.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-10 col-sm-offset-1">
+                <h3 class="font-alt mb-30"><lord-icon
+                  src="https://cdn.lordicon.com/eflfmgmj.json"
+                  trigger="hover"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="h3.font-alt.mb-30"
+                ></lord-icon> Nos services les plus populaires</h3>
+                <h2 class="module-title font-alt align-left underline"></h2>
 
-				<!-- Main -->
-					<div id="main">
+                <h6 class="font-alt"><span class="icon-global"></span> Test d'intrusion externe</h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Evaluation de la sécurité d'une application web</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="90" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-						<article id="about">
-							<h2 class="major">A propos de nous</h2>
+                <h6 class="font-alt"><span class="icon-global"></span> Test d'intrusion externe
+                </h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Evaluation de la sécurité système et réseau d'un hôte</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="80" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-							<p><strong>Trackflaw</strong> est une startup spécialisée dans la formation en sécurité informatique et plus particulièrement en sécurité offensive.</p>
+                <h6 class="font-alt"><span class="icon-target"></span> Test d'intrusion interne
+                </h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Evaluation de la sécurité interne d'une entreprise</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="70" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-							<p>Grâce à des méthodologies strictes et à des exigences de travail rigoureuses, Trackflaw s'engage à fournir des formations concises et professionnelles compréhensibles par un public hautement managérial comme par des acteurs très techniques.</p>
+                <h6 class="font-alt"><span class="icon-linegraph"></span> Collecte d'informations publiques
+                </h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Découverte de périmètre numérique</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-							<p>Toujours dans une optique de qualité optimale, aucune mission n'est sous-traitée afin de garantir le savoir-faire et l'image de marque de la société.</p>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
+                <h6 class="font-alt"><span class="icon-desktop"></span> Test d'intrusion applicatif
+                </h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Evaluation de la sécurité d'un client lourd</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-						<article id="values">
-							<h2 class="major">Nos valeurs</h2>
-							<p>De nombreuses entreprises sont présentes dans le monde de la sécurité informatique et plus particulièrement sur le marché des formations. Il est légitime de se demander pourquoi faire confiance à Trackflaw ?</strong></p>
-							<div class="block">
-								<h2><i style="font-size: 2em;" class="fas fa-sitemap"></i><br><br>
-									<div class="hacker-text 2" alt="Une méthodologie rigoureuse">Une méthodologie rigoureuse</div>
-								</h2>
-								<hr>
-								<p class="align-left">Pour garantir la haute qualité de ses formations, Trackflaw suit méticuleusement une méthodologie interne. Chaque cours est équilibré entre le contenu théorique et le contenu pratique. Un support de présentation, des feuilles d'exercices ainsi que des travaux pratiques sont prévus afin de dynamiser et optimiser l'apprentissage des étudiants. Le temps de correction et de suivi est compris dans la prestation.</p>
-							</div>
-							<div class="block">
-								<h2><i style="font-size: 2em;" class="fas fa-handshake-alt-slash"></i><br><br>
-									<div class="hacker-text 4" alt="Pas de sous-traitance">Pas de sous-traitance</div>
-								</h2>
-								<hr>
-								<p class="align-left">De nombreuses sociétés, peu scrupuleuses, sous-traitent leurs missions de formation pour diverses raisons. Ce manque de professionnalisme entraine des problèmes de suivi et de transparence pour le commanditaire.</p>
-								<p class="align-left">Chez Trackflaw, afin de garantir le savoir-faire, l'exigence et l'image de marque du cabinet, <strong>aucune mission n'est sous-traitée.</strong> Seuls les collaborateurs de la société sont autorisés à participer aux missions.</p>
-							</div>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
+                <h6 class="font-alt"><span class="icon-mobile"></span> Test d'intrusion mobile
+                </h6>
+                <h6 class="font-alt" style="margin-bottom: 25px;"> <em>Evaluation de la sécurité d'une application mobile Android</em></h6>
+                <div class="progress">
+                  <div class="progress-bar pb-green" aria-valuenow="60" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="font-alt"></span></div>
+                </div>
 
-						<article id="team">
-							<h2 class="major">Equipe</h2>
-							<img class="image face" src="images/thibaud.jpeg" alt="" />
-							<p class="text-face"><span class="hacker-text 5" alt='Thibaud ROBIN'>Thibaud ROBIN</span></p>
-							<p>Propulsé par la passion et formé par l'une des meilleures sociétés de sécurité informatique de France, Trackflaw est fièrement dirigée par Thibaud Robin.</p>
+                <div style="display: flex; justify-content: center;" class="callout-btn-box">
+                  <a class="btn btn-lg btn-b" href="/méthodologie"><lord-icon
+                  src="https://cdn.lordicon.com/njjuilvq.json"
+                  trigger="hover"
+                  colors="primary:#ffffff"
+                  style="width:25px;height:25px"
+                  class="current-color"
+                  target="a.btn.btn-lg.btn-b"
+                ></lord-icon> En savoir plus sur le déroulement de nos missions</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-							<p>Passionné par la sécurité offensive, Thibaud passe ses journées à rechercher des vulnérabilités. Grâce à des tests d'intrusion externes, internes et mobiles, il vise à rendre le monde d'aujourd'hui plus sûr.</p>
+        <section class="module-small bg-footer1" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Une question ?</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+            <div style="display: flex;justify-content: center;">
+              <a style="text-align: center;" class="btn btn-border-w btn-circle btn-lg"><lord-icon
+                src="https://cdn.lordicon.com/itykargr.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:30px;height:30px"
+                class="current-color"
+                target="a.btn.btn-border-w.btn-circle.btn-lg"
+              >
+            </lord-icon> &nbsp;contact@trackflaw.com</a>
+            </div>
+          </div>
+        </section>
 
-							<p>Le partage, la remise en cause, la tolérance et la modestie sont les différentes valeurs qu'il attribue à sa profession.</p>
-								
-							<h4>Points marquants</h4>
-							<ul>
-								<li>Administrateur sur root-me.org (<a href="https://root-me.org/th1b4ud">pseudo : Th1b4ud</a>)</li>
-								<li><a href="https://www.youracclaim.com/badges/089ad522-c87c-402f-a8ea-60f152356097">Certification OSCP</a></li>
-								<li>Certification CEH</li>
-								<li><a href="https://thibaud-robin.fr">Blog dédié à la sécurité informatique</a></li>
-								<li>Enseignant à l'ESGI</li>
-							</ul>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
+        <section class="module-small bg-footer2" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Planifier votre audit</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+            <div style="display: flex;justify-content: center;">
+              <a style="text-align: center;" class="btn btn-border-w btn-circle btn-lg" href="/commande"><lord-icon
+                src="https://cdn.lordicon.com/cnyeuzxc.json"
+                trigger="hover"
+                colors="primary:#ffffff"
+                style="width:30px;height:30px"
+                class="current-color"
+                target="a.btn.btn-border-w.btn-circle.btn-lg"
+              >
+            </lord-icon> &nbsp;Commander</a>
+            </div>
+          </div>
+        </section>
 
-						<article id="services">
-							<h2 class="major">Services</h2>
-							<div class="two-blocks">
-								<div class="block-lonely">
-									<h2><i style="font-size: 2em;" class="fas fa-chalkboard-teacher"></i><br><br><div class="hacker-text 7" alt="Enseignement">Enseignement</div></h2>
-									<hr>
-									<span style="text-align: left;">
-										<p>Trackflaw est en mesure d'intervenir sur différents sujets de formation liés à la sécurité informatique dans des établissements d'enseignement supérieur.</p>
-										<h4>Exemple de formations :</h4>
-										<ul>
-											<li>Preparation à la certificartion OSCP</li>
-											<li>Preparation à la certificartion CEH</li>
-											<li>Formation au développement sécurisé</li>
-											<li>Introduction à la sécurité informatique</li>
-										</ul>
-									</span>
-								</div>
-							</div>
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-
-						<article id="contact">
-							<h2 class="major">Contact</h2>
-							<a class="contact" href="https://www.linkedin.com/company/75490897">
-								<i class="fab fa-linkedin-in"></i>
-								 &nbsp; <span class="hacker-text 8" alt="Linkedin">Linkedin</span>
-							</a><br>
-
-							<a class="contact" href="https://twitter.com/trackflaw">
-								<i class="fab fa-twitter"></i> 
-								 &nbsp; <span class="hacker-text 9" alt="Twitter">Twitter</span>
-							</a><br>
-
-							<a class="contact" href="https://github.com/trackflaw">
-								<i class="fab fa-github"></i> 
-								 &nbsp; <span class="hacker-text 10" alt="GitHub">GitHub</span>
-							</a><br>
-
-							<a class="contact"><i class="fas fa-envelope"></i> 
-								&nbsp; <span class="hacker-text 11" alt="contact@trackflaw.com">contact@trackflaw.com</span>
-							</a><br><br>
-
-							<img class="image logo" src="/logos/slogan-animated.gif"/></span>
-						</article>
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="https://twitter.com/trackflaw" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.linkedin.com/company/75490897" class="icon brands fa-linkedin-in"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/trackflaw" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="/en"><span class="label">EN</span></a></li>
-						</ul>
-						<!-- <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p> -->
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-			
-			<!-- Scripts -->
-			<script src="/assets/js/typed.js"></script>
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
-	</body>
+        <footer class="footer bg-dark3">
+          <div class="container">
+            <div class="row d-flex">
+              <div class="col-sm-5">
+                <p class="copyright font-alt">&copy; 2022&nbsp;<a href="/">Trackflaw</a> | <a href="/mentions-légales/">Mentions légales</a></p>
+              </div>
+              <div class="col-sm-2">
+                <img style="max-width: 150px;" src="logos/Original-slogan.png">
+              </div>
+              <div class="col-sm-5">
+                <div class="footer-social-links"><a href="https://www.linkedin.com/company/75490897"><i class="fa-brands fa-linkedin"></i></a><a href="https://twitter.com/trackflaw"><i class="fa-brands fa-twitter"></i></a><a href="https://github.com/trackflaw"><i class="fa-brands fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa-solid fa-angle-double-up"></i></a></div>
+    </main>
+    <!--  
+    JavaScripts
+    =============================================
+    -->
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+    <script src="/assets/lib/vertical-timeline/assets/js/main.js"></script>
+    <script src="/assets/lib/components-font-awesome/js/all.min.js"></script>
+    <script src="/assets/lib/jquery/dist/jquery.js"></script>
+    <script src="/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/lib/wow/dist/wow.js"></script>
+    <script src="/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+    <script src="/assets/lib/isotope/dist/isotope.pkgd.js"></script>
+    <script src="/assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="/assets/lib/flexslider/jquery.flexslider.js"></script>
+    <script src="/assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="/assets/lib/smoothscroll.js"></script>
+    <script src="/assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
 </html>
