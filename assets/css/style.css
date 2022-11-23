@@ -81,6 +81,14 @@ hr {
   padding: 40px;
 }
 
+.progressbar-figure {
+  padding-top: 15px;
+  text-align: right;
+  font-size: small;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
 /*--------------------------------------------------------------
 	Common
 --------------------------------------------------------------*/
