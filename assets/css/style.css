@@ -356,6 +356,10 @@ a,
   background: rgb(19, 57, 80);
 }
 
+.bg-red {
+  background: #531212;
+}
+
 .bg-footer1 {
   background: #283C4B;
 }
@@ -1499,7 +1503,7 @@ General Styles - Owlcarousel
   width: 100%;
   z-index: 0;
   /* background-size: cover; */
-  background-size: 30em;
+  /* background-size: 150em; */
 }
 
 .titan-title-size-1 {
@@ -1517,9 +1521,12 @@ General Styles - Owlcarousel
 .titan-title-size-3 {
   letter-spacing: 16px;
   font-size: 70px;
-  background-color: rgba(15, 34, 45, 0.9);
+  /* background-color: rgba(15, 34, 45, 0.356); */
   padding-bottom: 200px;
   padding-top: 200px;
+  width: 50%;
+  margin:auto;
+  text-shadow: 1px 1px 10px #0f222f, 0 0 1em rgb(255, 255, 255), 0 0 1em #1170af;
 }
 
 .titan-title-size-4 {
@@ -1613,7 +1620,7 @@ General Styles - Owlcarousel
 /* Landing Page Header */
 .landing-header:before {
   position: absolute;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(119, 47, 109, 0.52) 95%, rgba(115, 35, 105, 0.58) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #22343f 95%, #182B36 100%);
   content: " ";
   height: 100%;
   width: 100%;
