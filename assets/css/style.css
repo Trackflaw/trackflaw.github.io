@@ -361,8 +361,13 @@ a,
 }
 
 .bg-footer1 {
-  background: #283C4B;
+  background: #eeeeee;
 }
+
+.bg-footer1 h2{
+  color: black!important;
+}
+
 
 .bg-footer2 {
   background: #1f303d;
