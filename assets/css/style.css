@@ -75,12 +75,6 @@ hr {
   padding-top: 20px;
 }
 
-.order-block {
-  background-color: rgba(255,255,255,0.01);
-  border-radius: 5px;
-  padding: 40px;
-}
-
 .progressbar-figure {
   padding-top: 15px;
   text-align: right;
@@ -1740,6 +1734,17 @@ Google map
   margin: 20px 0;
   text-align: center;
   font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#block1 h3, #block2 h3, #block3 h3, #block4 h3, #block5 h3 {
+  padding-top: 0px!important;
+}
+
+#block1, #block2, #block3, #block4 {
+  min-height: 550px;
 }
 
 .features-item p {
@@ -1763,23 +1768,26 @@ Google map
   margin: 16px 0 25px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 15px;
+  padding-top: 80px;
 }
 
 .alt-features-item {
   position: relative;
   padding-left: 55px;
   margin: 65px 0 0 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
 }
 
 .alt-features-icon {
   position: absolute;
   height: 40px;
   width: 40px;
-  left: 0;
-  top: 0;
   text-align: center;
   line-height: 40px;
-  font-size: 28px;
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.1);
 }
 
 .alt-features-title {
