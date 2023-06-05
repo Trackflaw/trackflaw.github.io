@@ -356,6 +356,10 @@ a,
   background: rgb(19, 57, 80);
 }
 
+.bg-dark5 {
+  background: #4E636F;
+}
+
 .bg-red {
   background: #531212;
 }
@@ -423,7 +427,47 @@ a,
 }
 
 .bg-light {
-  background: #f6f6f6;
+  background: #f9f9ff;
+}
+
+.bg-light p, .bg-light a, .bg-light h2, .bg-light h3{
+  color: #000;
+}
+
+.bg-light-red {
+  background: #fff1f1;
+}
+
+.bg-light-red p, .bg-light-red a{
+  color: #000;
+}
+
+.bg-light-red h1, .bg-light-red h2, .bg-light-red h3{
+  color: rgb(199, 16, 16);
+}
+
+.bg-light-red a.btn.btn-danger.btn-circle {
+  background-color: transparent;
+  color: rgb(199, 16, 16);
+}
+
+.bg-light-red a.btn.btn-danger.btn-circle:hover {
+  background-color: rgb(199, 16, 16);
+  color: white;
+}
+
+.bg-dark5 a.btn.btn-danger.btn-circle {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  border-color: white;
+  transition: 0.2s;
+}
+
+.bg-dark5 a.btn.btn-danger.btn-circle:hover {
+  background-color: rgb(199, 16, 16);
+  color: white;
+  border-color: rgb(70 12 12);
+  transition: 0.2s;
 }
 
 .parallax-bg {
@@ -1660,7 +1704,7 @@ General Styles - Owlcarousel
 
 
 .footer .footer-social-links {
-  text-align: right;
+  text-align: center;
   padding-top: 35px;
   font-size: 20px;
 }
