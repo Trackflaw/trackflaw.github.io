@@ -16,7 +16,7 @@ p {
 }
 
 .section-scroll.btn.btn-border-w.btn-circle {
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
 }
 
 hr {
@@ -1551,7 +1551,7 @@ General Styles - Owlcarousel
 
 .titan-title-size-1 {
   letter-spacing: 4px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .titan-title-size-2 {
@@ -1562,8 +1562,8 @@ General Styles - Owlcarousel
 }
 
 .titan-title-size-3 {
-  letter-spacing: 16px;
-  font-size: 70px;
+  letter-spacing: 30px;
+  font-size: 80px;
   /* background-color: rgba(15, 34, 45, 0.356); */
   padding-bottom: 200px;
   padding-top: 200px;
