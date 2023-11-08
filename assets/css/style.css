@@ -335,7 +335,8 @@ a,
 }
 
 .bg-dark {
-  background: #2C3A47
+  /* background: #2C3A47 */
+  background: linear-gradient(149deg, #354655 0%, #182B36 100%, #354655 100%);
 }
 
 .bg-dark2 {
@@ -1408,6 +1409,8 @@ General Styles - Owlcarousel
   letter-spacing: 3px;
   font-size: 11px;
   transition: background, padding 0.4s ease-in-out 0s;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .navbar a {
@@ -1545,7 +1548,7 @@ General Styles - Owlcarousel
   background-position: center center;
   width: 100%;
   z-index: 0;
-  /* background-size: cover; */
+  background-size: cover;
   /* background-size: 150em; */
 }
 
@@ -1775,7 +1778,8 @@ Google map
   position: relative;
   padding-left: 55px;
   margin: 65px 0 0 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(149deg, rgb(31 50 65) 0%, #182B36 100%, #14242e 100%);
   padding: 20px;
   border-radius: 5px;
   min-height: 320px;
