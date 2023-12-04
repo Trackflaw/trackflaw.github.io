@@ -15,6 +15,10 @@ p {
   word-wrap: break-word; 
 }
 
+.btn lord-icon, .btn span{
+  vertical-align: middle;
+}
+
 .section-scroll.btn.btn-border-w.btn-circle {
   /* font-size: 1.3em; */
 }
@@ -340,7 +344,7 @@ a,
 }
 
 .bg-dark2 {
-  background: #283c4b
+  background: linear-gradient(90deg, #43627a, #1e323f);
 }
 
 .bg-dark3 {
@@ -352,8 +356,14 @@ a,
 }
 
 .bg-dark5 {
-  background: #4E636F;
+  background: linear-gradient(90deg, #283C4B, #20313d);
 }
+
+.bg-dark6 {
+  background: #283C4B;
+}
+
+
 
 .bg-red {
   background: #531212;
@@ -1400,7 +1410,7 @@ General Styles - Owlcarousel
 	Navbar
 --------------------------------------------------------------*/
 .navbar-custom {
-  background-color: rgb(17, 31, 41);
+  background: linear-gradient(90deg, #152d3b, #08131a);
   border: 0;
   border-radius: 0;
   z-index: 1000;
@@ -1550,6 +1560,15 @@ General Styles - Owlcarousel
   z-index: 0;
   background-size: cover;
   /* background-size: 150em; */
+}
+
+section.home-section video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .titan-title-size-1 {
@@ -3108,7 +3127,7 @@ Google map
     margin: 0 0 30px;
   }
   .alt-features-item {
-    padding-left: 0;
+    /* padding-left: 0; */
     margin: 0 0 30px;
     text-align: center;
   }
@@ -3170,3 +3189,4 @@ Google map
     width: 100%;
   }
 }
+
