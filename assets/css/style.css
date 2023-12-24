@@ -44,7 +44,7 @@ hr {
   margin-bottom: 0px;
   transition: 0.5s;
   color: #fff!important;
-  background-color: rgb(19, 57, 80)!important;
+  background: linear-gradient(60deg, #233a49, #1e323f)!important;
   border-color: rgb(27, 83, 116)!important;
 }
 
@@ -52,6 +52,22 @@ hr {
   background-color: rgba(19, 57, 80, 0.4)!important;
   transition: 0.5s;
   color: white!important;
+}
+
+
+.btn.btn-custom {
+  background: linear-gradient(120deg, #072057bb, #2f4d5f, #1d303d);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position .5s;
+  color: white;
+  border: solid 1px #324e61;
+}
+
+.btn.btn-custom:hover {
+  background-position: 0 0;
+  color: white;
+  border: solid 1px #324e61;
 }
 
 .footer-social-links a {
@@ -85,6 +101,18 @@ hr {
   font-size: small;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
+}
+
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------
@@ -245,7 +273,7 @@ a,
 
 .main {
   position: relative;
-  background-color: #182B36;
+  background: linear-gradient(60deg, #233a49, #1e323f);
   z-index: 1;
 }
 
@@ -256,6 +284,7 @@ a,
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+  background: linear-gradient(60deg, #233a49, #1e323f);
 }
 
 /* Module header */
@@ -1079,7 +1108,7 @@ blockquote {
 
 .module-title {
   position: relative;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   text-align: center;
   font-weight: 400;
   font-size: 30px;
@@ -1756,8 +1785,9 @@ Google map
   margin: 20px 0;
   text-align: center;
   font-size: 14px;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(149deg, rgb(31 50 65) 0%, #182B36 100%, #14242e 100%)!important;
+  padding: 40px;
   border-radius: 5px;
 }
 
@@ -1766,7 +1796,7 @@ Google map
 }
 
 #block1, #block2, #block3, #block4 {
-  min-height: 550px;
+  min-height: 650px;
 }
 
 .features-item p {
