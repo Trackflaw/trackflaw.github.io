@@ -1,5 +1,3 @@
-console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55');
-
 function reveal() {
     var reveals = document.querySelectorAll(".reveal");
   

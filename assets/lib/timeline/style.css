@@ -43,7 +43,8 @@ Main components
   left: 25px;
   height: 100%;
   width: 4px;
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(149deg, rgb(31 50 65) 0%, #182B36 100%, #14242e 100%);
 }
 @media only screen and (min-width: 1170px) {
   #cd-timeline {
@@ -93,7 +94,8 @@ Main components
   box-shadow: 0 0 0 4px #182B36, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
 .cd-timeline-img {
-  background: rgba(0, 0, 0, 0.15);
+  /* background: rgba(0, 0, 0, 0.15); */
+  background: linear-gradient(149deg, rgb(31 50 65) 0%, #182B36 100%, #14242e 100%);
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
@@ -120,7 +122,8 @@ Main components
     color:white!important;
   }
   .timeline-content-info {
-    background: #2B343A;
+    /* background: #2B343A; */
+    background: linear-gradient(149deg, rgb(31 50 65) 0%, #182B36 100%, #14242e 100%);
     padding: 5px 10px;
     color: rgba(255,255,255,0.7);
     font-size: 12px;
