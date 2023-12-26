@@ -1839,7 +1839,16 @@ Google map
   padding: 20px;
   border-radius: 5px;
   min-height: 320px;
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position .5s;
 }
+
+/* .alt-features-item:hover {
+  background: linear-gradient(149deg, rgb(43, 70, 90) 0%, #182B36 100%, #14242e 100%);
+  background-position: 0 0;
+  transition: 0.5s;
+} */
 
 .alt-features-icon {
   position: absolute;
