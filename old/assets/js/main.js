@@ -348,7 +348,7 @@
 
 setTimeout(() => {
   var typed = new Typed(".terminal", {
-    strings: ["Full overall pentesting "],
+    strings: ["Expert en sécurité offensive "],
     typeSpeed: 160,
     cursorChar: "_",
   });

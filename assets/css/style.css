@@ -2598,6 +2598,19 @@ Google map
 }
 
 /* Accordion */
+.panel, .panel-body, .panel-default {
+  background-color: transparent;
+  border-color: #ffffff10!important;
+  color: white!important;
+  text-transform: none;
+  font-family: "Montserrat", "Raleway", "Source Sans Pro", "sans-serif"!important;
+  font-size: 14px;
+}
+
+.panel-heading {
+  background-color: #334453!important;
+}
+
 .panel-title {
   font-size: 14px;
 }
