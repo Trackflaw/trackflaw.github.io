@@ -2607,13 +2607,25 @@ Google map
   font-size: 14px;
 }
 
+.panel-default>.panel-heading a {
+  color: white!important;
+}
+
 .panel-heading {
   background-color: #334453!important;
 }
 
 .panel-title {
   font-size: 14px;
+  padding: 5px;
+  text-transform: none;
+  font-style: italic;
 }
+
+.panel-body {
+  padding: 20px!important;
+}
+
 
 .panel-heading a {
   position: relative;
@@ -2622,7 +2634,7 @@ Google map
 
 .panel-heading a:after {
   position: absolute;
-  content: "\f106";
+  /* content: "\f106"; */
   top: 50%;
   right: 0px;
   font-family: "FontAwesome";
@@ -2632,7 +2644,7 @@ Google map
 }
 
 .panel-heading a.collapsed:after {
-  content: "\f107";
+  /* content: "\f107"; */
 }
 
 /* Tables */
