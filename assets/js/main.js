@@ -6,11 +6,11 @@ function updateIframeSrc(number) {
     iframe.src = newSrc;
 }
 
-var myvid = $('#myVid')[0];
-$(window).scroll(function(){
-  var scroll = $(this).scrollTop();
-  scroll > 70 ? myvid.pause() : myvid.play()
-})
+// var myvid = $('#myVid')[0];
+// $(window).scroll(function(){
+//   var scroll = $(this).scrollTop();
+//   scroll > 70 ? myvid.pause() : myvid.play()
+// })
 
 fetch('https://linkedin.trackflaw.com/')
     .then(response => response.text())
