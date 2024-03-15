@@ -25,6 +25,6 @@ def encrypt_image(file_name):
         img_shuffled[new_i, new_j] = img_data[orig_i, orig_j]
 
     img_encrypted = Image.fromarray(img_shuffled)
-    img_encrypted.save(file_name + ".enc")
+    img_encrypted.save(file_name + ".enc.png")
 
 encrypt_image('secret.png')
