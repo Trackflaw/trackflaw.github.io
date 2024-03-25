@@ -44,6 +44,12 @@ window.addEventListener("scroll", reveal);
  * Preloader
  /* ---------------------------------------------- */
 (function () {
+    // Kill switch if loading too long
+    setTimeout(() => {
+        $('.loader').fadeOut();
+        $('.page-loader').delay(350).fadeOut('slow');
+      }, "1000");
+      
     $(window).on('load', function () {
         $('.loader').fadeOut();
         $('.page-loader').delay(350).fadeOut('slow');
