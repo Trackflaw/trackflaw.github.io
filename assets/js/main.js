@@ -38,6 +38,31 @@ function reveal() {
     }
 }
 
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+const videos = document.querySelectorAll('.autoplayVideo');
+
+function playVideosOnScroll() {
+    videos.forEach((video) => {
+        if (isElementInViewport(video)) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    });
+}
+
+window.addEventListener('scroll', playVideosOnScroll);
+
+
 window.addEventListener("scroll", reveal);
 
 /* ---------------------------------------------- /*
@@ -48,8 +73,8 @@ window.addEventListener("scroll", reveal);
     setTimeout(() => {
         $('.loader').fadeOut();
         $('.page-loader').delay(350).fadeOut('slow');
-      }, "1000");
-      
+    }, "1000");
+
     $(window).on('load', function () {
         $('.loader').fadeOut();
         $('.page-loader').delay(350).fadeOut('slow');
