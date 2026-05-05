@@ -1,3 +1,2 @@
-/services/  /services  301
-/commande/  /commande  301
-/valeurs/  /valeurs  301
+# Trailing-slash normalization is handled by `html_handling = "drop-trailing-slash"`
+# in wrangler.toml. Keep this file ready for future explicit redirects.
