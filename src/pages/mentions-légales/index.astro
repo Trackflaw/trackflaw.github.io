@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+---
+
+<Layout
+  title="Trackflaw | Mentions légales"
+  description="Mentions légales du site trackflaw.com — éditeur, hébergement, protection des données."
+>
+  <Section size="xl" containerSize="md" class="pt-32 sm:pt-40">
+    <div class="reveal text-center">
+      <p class="mb-3 inline-flex rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft backdrop-blur-md">
+        Informations légales
+      </p>
+      <h1 class="text-5xl sm:text-6xl font-display font-bold">
+        Mentions <span class="text-gradient">légales</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-fg-muted leading-relaxed">
+        Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004
+        pour la confiance en l'économie numérique, il est précisé aux
+        utilisateurs du site trackflaw.com l'identité des différents
+        intervenants dans le cadre de sa réalisation et de son suivi.
+      </p>
+    </div>
+
+    <div class="mt-16 space-y-8">
+      <GlassCard hover class="reveal">
+        <h2 class="font-display text-2xl font-bold mb-4 text-white">
+          Édition du site
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Le présent site, accessible à l'URL
+          <span class="text-brand-soft">https://trackflaw.com</span> (« le Site »), est édité par
+          <a
+            href="https://annuaire-entreprises.data.gouv.fr/entreprise/928024389"
+            target="_blank"
+            rel="noopener noreferrer">Trackflaw</a>
+          (« l'Éditeur »), siégeant au 60 rue François 1<sup>er</sup> à Paris 75008
+          en France. La société est présidée par Thibaud ROBIN de nationalité
+          française.
+        </p>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          Trackflaw est une SAS, société par actions simplifiée, au numéro SIRET
+          <strong class="text-white">928 024 389 00019</strong> et au numéro de
+          TVA intracommunautaire <strong class="text-white">FR34928024389</strong>.
+        </p>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          La société Trackflaw est référencée sur
+          <a
+            href="https://annuaire-entreprises.data.gouv.fr/entreprise/928024389"
+            target="_blank"
+            rel="noopener noreferrer">l'annuaire des entreprises</a>.
+        </p>
+      </GlassCard>
+
+      <GlassCard hover class="reveal">
+        <h2 class="font-display text-2xl font-bold mb-4 text-white">
+          Hébergement
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Le Site est hébergé par la société Cloudflare Inc., située à San
+          Francisco en Californie aux États-Unis.
+        </p>
+      </GlassCard>
+
+      <GlassCard hover class="reveal">
+        <h2 class="font-display text-2xl font-bold mb-4 text-white">
+          Directeur de publication
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Le Directeur de la publication du Site est Thibaud ROBIN.
+        </p>
+      </GlassCard>
+
+      <GlassCard hover class="reveal">
+        <h2 class="font-display text-2xl font-bold mb-4 text-white">
+          Nous contacter
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Par email :
+          <a href="mailto:contact@trackflaw.com">contact@trackflaw.com</a>
+        </p>
+      </GlassCard>
+
+      <GlassCard hover class="reveal">
+        <h2 class="font-display text-2xl font-bold mb-4 text-white">
+          Protection des données utilisateurs
+        </h2>
+        <p class="text-fg-muted leading-relaxed">
+          Trackflaw (https://trackflaw.com) est susceptible de traiter tout
+          ou partie des données :
+        </p>
+        <ul class="mt-4 space-y-2 text-fg-muted">
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+            <span>
+              Afin de permettre la navigation sur le Site, la gestion et la
+              traçabilité des prestations ainsi que des services commandés par
+              l'utilisateur (ex : données de connexion et d'utilisation du
+              Site).
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+            <span>
+              Afin de prévenir et lutter contre la fraude informatique :
+              matériel informatique utilisé pour la navigation et adresse IP.
+            </span>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"></span>
+            <span>
+              Afin d'améliorer la navigation sur le Site : données statistiques
+              sur l'utilisation.
+            </span>
+          </li>
+        </ul>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          Trackflaw ne commercialise pas vos données personnelles. Ces dernières
+          sont uniquement utilisées par nécessité ou à des fins statistiques et
+          d'analyses.
+        </p>
+        <p class="mt-4 text-fg-muted leading-relaxed">
+          Chaque personne dispose d'un droit d'accès, de rectification,
+          d'effacement et d'opposition à ses données personnelles. Vous pouvez
+          exercer ce droit en nous contactant à l'adresse suivante :
+          <a href="mailto:rgpd@trackflaw.com">rgpd@trackflaw.com</a>.
+        </p>
+      </GlassCard>
+    </div>
+  </Section>
+</Layout>

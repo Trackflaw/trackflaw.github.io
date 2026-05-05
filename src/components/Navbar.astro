@@ -1,0 +1,309 @@
+---
+const links = [
+  { href: "/services", label: "Services" },
+  { href: "/valeurs", label: "Valeurs" },
+  { href: "/méthodologie", label: "Méthodologie" },
+  { href: "https://blog.trackflaw.com", label: "Blog", external: true },
+  { href: "https://flawfence.com", label: "Flawfence", external: true },
+];
+
+const decode = (s: string) => {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
+};
+const path = decode(Astro.url.pathname).replace(/\/$/, "");
+const isActive = (href: string) => {
+  if (/^https?:\/\//.test(href)) return false;
+  const target = decode(href).replace(/\/$/, "");
+  return path === target;
+};
+---
+
+<header
+  data-nav
+  class="nav-shell fixed inset-x-0 top-0 z-50 transition-all duration-500"
+>
+  <span aria-hidden="true" class="nav-aurora"></span>
+
+  <nav
+    class="nav-bar relative px-5 sm:px-8 py-3.5"
+    aria-label="Navigation principale"
+  >
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-6">
+      <a
+        href="/"
+        class="group relative flex items-center gap-3 text-white no-underline hover:text-white"
+      >
+        <span class="relative flex h-9 w-9 items-center justify-center">
+          <span
+            aria-hidden="true"
+            class="absolute inset-0 rounded-xl bg-brand/20 opacity-60 blur-md transition-opacity duration-500 group-hover:opacity-100"
+          ></span>
+          <img
+            src="/logos/Original-transparent-bleu.png"
+            alt=""
+            width="32"
+            height="32"
+            class="relative h-8 w-8 object-contain drop-shadow-[0_0_10px_rgba(92,225,255,0.55)] transition-transform duration-500 group-hover:scale-105"
+          />
+        </span>
+        <span
+          class="font-display text-base font-light uppercase tracking-[0.32em] text-white/95"
+        >
+          TRACKFLAW
+        </span>
+      </a>
+
+      <ul
+        data-nav-menu
+        class="nav-menu fixed inset-x-3 top-20 hidden flex-col gap-1 overflow-hidden rounded-2xl border border-white/10 bg-bg-2/85 p-3 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)] backdrop-blur-2xl lg:static lg:inset-auto lg:top-auto lg:flex lg:flex-row lg:items-center lg:gap-1 lg:overflow-visible lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none"
+      >
+        {
+          links.map((l) => {
+            const active = isActive(l.href);
+            return (
+              <li>
+                <a
+                  href={l.href}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noopener noreferrer" : undefined}
+                  aria-current={active ? "page" : undefined}
+                  class={`nav-link flex items-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                    active
+                      ? "is-active text-white"
+                      : "text-fg-muted hover:bg-white/5 hover:text-white"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              </li>
+            );
+          })
+        }
+        <li class="mt-2 lg:mt-0 lg:ml-3">
+          <a
+            href="/commande"
+            aria-current={isActive("/commande") ? "page" : undefined}
+            class="cta-pill inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white transition-all duration-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+            Commander
+          </a>
+        </li>
+      </ul>
+
+      <button
+        data-nav-toggle
+        type="button"
+        aria-expanded="false"
+        aria-label="Ouvrir le menu"
+        class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-md transition hover:border-brand-neon/50 hover:bg-white/10 lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-5 w-5"
+        >
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Aurora halo above the bar — cyan + violet drift */
+  .nav-aurora {
+    position: absolute;
+    inset-inline: 0;
+    top: -40%;
+    height: 220%;
+    background:
+      radial-gradient(
+        ellipse 60% 100% at 20% 0%,
+        rgba(92, 225, 255, 0.18),
+        transparent 65%
+      ),
+      radial-gradient(
+        ellipse 50% 100% at 80% 0%,
+        rgba(167, 139, 250, 0.14),
+        transparent 65%
+      );
+    filter: blur(20px);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+
+  .nav-bar {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 11, 24, 0.45) 0%,
+        rgba(7, 11, 24, 0.18) 100%
+      );
+    backdrop-filter: blur(22px) saturate(190%);
+    -webkit-backdrop-filter: blur(22px) saturate(190%);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 0 rgba(255, 255, 255, 0.02);
+    transition:
+      background 0.5s ease,
+      backdrop-filter 0.5s ease,
+      box-shadow 0.5s ease;
+  }
+
+  /* Hairline gradient at the bottom edge */
+  .nav-bar::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(92, 225, 255, 0.22) 25%,
+      rgba(255, 255, 255, 0.32) 50%,
+      rgba(92, 225, 255, 0.22) 75%,
+      transparent 100%
+    );
+    pointer-events: none;
+    opacity: 0.55;
+    transition:
+      opacity 0.5s ease,
+      box-shadow 0.5s ease;
+  }
+
+  /* Top inner highlight — gives the "polished glass" feel */
+  .nav-bar::before {
+    content: "";
+    position: absolute;
+    inset-inline: 6%;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.45),
+      transparent
+    );
+    pointer-events: none;
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+  }
+
+  [data-nav].is-scrolled .nav-bar {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4, 6, 13, 0.78) 0%,
+        rgba(7, 11, 24, 0.55) 100%
+      );
+    backdrop-filter: blur(28px) saturate(200%);
+    -webkit-backdrop-filter: blur(28px) saturate(200%);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 0 rgba(92, 225, 255, 0.06),
+      0 14px 40px -16px rgba(0, 0, 0, 0.7),
+      0 0 30px -12px rgba(23, 178, 255, 0.25);
+  }
+  [data-nav].is-scrolled .nav-bar::after {
+    opacity: 1;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(92, 225, 255, 0.45) 50%,
+      transparent 100%
+    );
+    box-shadow: 0 0 14px rgba(92, 225, 255, 0.5);
+  }
+  [data-nav].is-scrolled .nav-bar::before {
+    opacity: 0.7;
+  }
+  [data-nav].is-scrolled .nav-aurora {
+    opacity: 0.4;
+  }
+
+  /* Active page indicator — soft pill with inner glow */
+  .nav-link.is-active {
+    background: linear-gradient(
+      135deg,
+      rgba(92, 225, 255, 0.14),
+      rgba(255, 255, 255, 0.04)
+    );
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.12),
+      0 0 18px -8px rgba(92, 225, 255, 0.5);
+  }
+  .nav-link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    height: 2px;
+    width: 18px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(92, 225, 255, 0.85),
+      transparent
+    );
+    box-shadow: 0 0 8px rgba(92, 225, 255, 0.7);
+    border-radius: 999px;
+  }
+  .nav-link {
+    position: relative;
+  }
+
+  /* CTA pill with rotating ring (uses .btn-electric tokens but adapted) */
+  .cta-pill {
+    position: relative;
+    isolation: isolate;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(92, 225, 255, 0.22),
+        rgba(23, 178, 255, 0.18) 60%,
+        rgba(167, 139, 250, 0.18)
+      );
+    border: 1px solid rgba(92, 225, 255, 0.45);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.18),
+      0 0 24px -10px rgba(92, 225, 255, 0.55);
+    backdrop-filter: blur(10px);
+  }
+  .cta-pill:hover {
+    border-color: rgba(92, 225, 255, 0.7);
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+      0 0 36px -8px rgba(92, 225, 255, 0.7);
+  }
+
+  .nav-menu.is-open {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,141 @@
+---
+import { socialUrls } from "../data/social";
+
+const platforms = [
+  {
+    key: "youtube",
+    name: "YouTube",
+    handle: "@trackflaw",
+    blurb: "Décryptages, démos d'attaques et tutoriels cyber.",
+    cta: "S'abonner",
+    href: socialUrls.youtubeSubscribe,
+    profileHref: socialUrls.youtube,
+    accent: "rgba(255, 51, 64, 0.55)",
+    glow: "rgba(255, 51, 64, 0.35)",
+    iconBg: "from-[#ff3340] to-[#cc0000]",
+    iconPath: `<path d="M21.58 7.19a2.51 2.51 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42a2.51 2.51 0 0 0-1.77 1.77A26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.51 2.51 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42a2.51 2.51 0 0 0 1.77-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81zM10 15V9l5.2 3z"/>`,
+    bgGradient:
+      "radial-gradient(ellipse 80% 70% at 30% 0%, rgba(255,51,64,0.18), transparent 60%)",
+  },
+  {
+    key: "instagram",
+    name: "Instagram",
+    handle: "@trackflaw",
+    blurb: "Coulisses de la team, événements et actualité visuelle.",
+    cta: "Suivre",
+    href: socialUrls.instagram,
+    profileHref: socialUrls.instagram,
+    accent: "rgba(225, 48, 108, 0.55)",
+    glow: "rgba(225, 48, 108, 0.32)",
+    iconBg: "from-[#feda75] via-[#fa7e1e] via-[#d62976] via-[#962fbf] to-[#4f5bd5]",
+    iconPath: `<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>`,
+    bgGradient:
+      "radial-gradient(ellipse 80% 70% at 70% 100%, rgba(225,48,108,0.18), transparent 60%), radial-gradient(ellipse 60% 60% at 30% 0%, rgba(254,218,117,0.1), transparent 60%)",
+  },
+  {
+    key: "tiktok",
+    name: "TikTok",
+    handle: "@trackflaw",
+    blurb: "Cyber en format court — vulgarisation et lives flash.",
+    cta: "Voir le profil",
+    href: socialUrls.tiktok,
+    profileHref: socialUrls.tiktok,
+    accent: "rgba(37, 244, 238, 0.55)",
+    glow: "rgba(254, 44, 85, 0.32)",
+    iconBg: "from-[#25f4ee] to-[#fe2c55]",
+    iconPath: `<path d="M19.6 6.7a4.8 4.8 0 0 1-2.8-1 4.8 4.8 0 0 1-1.9-3.7H11v13.6a2.7 2.7 0 1 1-2.7-2.7c.3 0 .5 0 .8.1V9.3a6.5 6.5 0 1 0 5.6 6.4V9.5a7.7 7.7 0 0 0 4.9 1.6V7.3c-.4 0-1.4-.1-2-.6z"/>`,
+    bgGradient:
+      "radial-gradient(ellipse 60% 60% at 20% 0%, rgba(37,244,238,0.14), transparent 60%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(254,44,85,0.18), transparent 60%)",
+  },
+];
+---
+
+<div class="grid gap-5 md:grid-cols-3">
+  {
+    platforms.map((p, i) => (
+      <article
+        class={`reveal reveal-delay-${i + 1} group glass glass-hover relative overflow-hidden p-6`}
+      >
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 opacity-90 transition-opacity duration-500 group-hover:opacity-100"
+          style={`background: ${p.bgGradient};`}
+        />
+
+        <div class="relative flex h-full flex-col">
+          <div class="flex items-center gap-3">
+            <span
+              class={`inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${p.iconBg} shadow-[0_0_28px_-6px_${p.glow}]`}
+              style={`box-shadow: 0 0 28px -6px ${p.glow};`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill={p.key === "instagram" ? "none" : "white"}
+                stroke={p.key === "instagram" ? "white" : "none"}
+                stroke-width={p.key === "instagram" ? "2" : "0"}
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="h-5 w-5"
+                set:html={p.iconPath}
+              />
+            </span>
+            <div class="min-w-0">
+              <p class="font-display text-base font-semibold text-white">
+                {p.name}
+              </p>
+              <a
+                href={p.profileHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block truncate text-xs text-fg-muted hover:text-brand-soft"
+              >
+                {p.handle}
+              </a>
+            </div>
+          </div>
+
+          <p class="mt-5 flex-1 text-sm leading-relaxed text-fg-muted">
+            {p.blurb}
+          </p>
+
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300"
+            style={`--hover-accent: ${p.accent}; --hover-glow: ${p.glow};`}
+          >
+            {p.cta}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-white/0 to-transparent transition-all duration-500 group-hover:via-white/30"
+        />
+      </article>
+    ))
+  }
+</div>
+
+<style>
+  article a:last-of-type:hover {
+    border-color: var(--hover-accent);
+    box-shadow: 0 0 24px -8px var(--hover-glow);
+  }
+</style>

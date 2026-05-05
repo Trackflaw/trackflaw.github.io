@@ -1,0 +1,93 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Button from "../../components/Button.astro";
+
+const values = [
+  {
+    icon: "shield-check",
+    title: "Des méthodologies rigoureuses",
+    body: `Pour garantir l'exhaustivité des tests, Trackflaw suit méticuleusement la méthodologie de l'OWASP divisée en 12 sections.<br><br>Chacune de ces sections comporte des exemples de tests permettant de vérifier les fonctionnalités d'une application et de juger au mieux son niveau général de sécurité. Une méthodologie similaire est appliquée pour les tests d'intrusion interne et mobile.`,
+  },
+  {
+    icon: "scan-eye",
+    title: "Pas de rapport de scanner",
+    body: `Les scanners automatiques de vulnérabilités sont des outils puissants et utiles dans notre métier. Cependant, des entreprises peu scrupuleuses proposent ce type d'outil comme un véritable service de test d'intrusion, dégradant ainsi notre image d'auditeurs.<br><br>Chez Trackflaw, ces outils ne sont utilisés que dans des cas très spécifiques afin d'apporter un point de vue différent à l'auditeur dans le but de compléter sa prestation.`,
+  },
+  {
+    icon: "file-text",
+    title: "Un rapport exhaustif",
+    body: `Le travail d'un auditeur est avant tout de transmettre de façon claire et concise aux équipes auditées les différentes faiblesses relevées afin de leur apporter la plus grande aide possible dans leurs chantiers de correction.<br><br>Trackflaw accorde une très grande attention aux livrables afin qu'ils puissent être assimilés par un public managérial comme très technique.`,
+  },
+  {
+    icon: "users-lock",
+    title: "Pas de sous-traitance",
+    body: `De nombreuses sociétés, peu scrupuleuses, sous-traitent leurs tests d'intrusion. Ce manque de professionnalisme entraîne des problèmes de confidentialité, de suivi et de transparence pour le commanditaire.<br><br>Chez Trackflaw, afin de garantir le savoir-faire et l'image de marque du cabinet, <strong>aucune mission n'est sous-traitée</strong>. Uniquement les collaborateurs de la société sont autorisés à participer aux missions.`,
+  },
+  {
+    icon: "tag",
+    title: "Des tarifs attractifs",
+    body: `Trackflaw possède une politique tarifaire attractive destinée aux très petites, petites et moyennes entreprises. Nous nous adaptons à chaque besoin et budget afin d'apporter la meilleure réponse possible.`,
+  },
+];
+
+const icons: Record<string, string> = {
+  "shield-check": `<path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/><path d="m9 12 2 2 4-4"/>`,
+  "scan-eye": `<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="M21 12c-2 4-5 6-9 6s-7-2-9-6c2-4 5-6 9-6s7 2 9 6"/>`,
+  "file-text": `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/>`,
+  "users-lock": `<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2z"/><path d="M19 11V9a2 2 0 1 1 4 0v2"/>`,
+  tag: `<path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/>`,
+};
+---
+
+<Layout
+  title="Trackflaw | Nos valeurs"
+  description="Le milieu de la sécurité informatique est très concurrentiel. Trackflaw se positionne comme société experte dans les audits techniques offensifs."
+>
+  <Section size="xl" containerSize="lg" class="pt-32 sm:pt-40">
+    <SectionTitle
+      eyebrow="Valeurs & engagements"
+      title='Nos <span class="text-gradient">5 engagements</span>'
+      subtitle="Le milieu de la sécurité informatique est très concurrentiel. Trackflaw se positionne comme société experte dans les audits techniques offensifs en suivant une méthodologie et une exigence pointue afin de garantir un très haut niveau de qualité.<br><br><strong>Choisir Trackflaw vous permet de garantir un haut niveau de technicité lors de vos audits.</strong>"
+    />
+
+    <div class="mt-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        values.map((v, i) => (
+          <GlassCard
+            hover
+            class={`reveal reveal-delay-${(i % 4) + 1} flex flex-col`}
+          >
+            <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-brand/30 bg-brand/10 text-brand-soft shadow-[0_0_30px_-10px_rgba(23,178,255,0.5)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-6 w-6"
+                set:html={icons[v.icon]}
+              />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-3 text-white">
+              {`${i + 1}. ${v.title}`}
+            </h3>
+            <p
+              class="text-sm text-fg-muted leading-relaxed"
+              set:html={v.body}
+            />
+          </GlassCard>
+        ))
+      }
+    </div>
+
+    <div class="reveal mt-20 flex flex-wrap items-center justify-center gap-3">
+      <Button href="/services" variant="primary">Consulter nos services</Button>
+      <Button href="/commande" variant="ghost">Commander un audit</Button>
+    </div>
+  </Section>
+</Layout>

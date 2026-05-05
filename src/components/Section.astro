@@ -1,0 +1,36 @@
+---
+interface Props {
+  id?: string;
+  size?: "sm" | "md" | "lg" | "xl";
+  class?: string;
+  containerSize?: "sm" | "md" | "lg" | "xl";
+}
+const {
+  id,
+  size = "md",
+  class: className = "",
+  containerSize = "lg",
+} = Astro.props;
+
+const padding = {
+  sm: "py-12 sm:py-16",
+  md: "py-16 sm:py-24",
+  lg: "py-24 sm:py-32",
+  xl: "py-32 sm:py-40",
+};
+
+const containerSizes = {
+  sm: "max-w-2xl",
+  md: "max-w-4xl",
+  lg: "max-w-6xl",
+  xl: "max-w-7xl",
+};
+---
+
+<section id={id} class={`relative ${padding[size]} ${className}`}>
+  <div
+    class={`mx-auto px-5 sm:px-8 ${containerSizes[containerSize]}`}
+  >
+    <slot />
+  </div>
+</section>

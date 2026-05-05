@@ -1,0 +1,83 @@
+---
+import type { Member } from "../data/team";
+
+interface Props {
+  member: Member;
+  delay?: 0 | 1 | 2 | 3 | 4;
+}
+const { member, delay = 0 } = Astro.props;
+const delayClass = delay > 0 ? `reveal-delay-${delay}` : "";
+---
+
+<article class={`reveal ${delayClass} group`}>
+  <div class="glass glass-hover relative overflow-hidden p-0">
+    <div
+      class="relative aspect-square overflow-hidden bg-gradient-to-br from-brand/15 via-bg-2 to-bg-2"
+    >
+      <img
+        src={member.image}
+        alt={member.name}
+        loading="lazy"
+        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg-2/95 via-bg-2/30 to-transparent"
+      >
+      </div>
+
+      <div
+        class="absolute inset-x-0 bottom-0 flex translate-y-2 flex-col gap-2 p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100"
+      >
+        <p class="text-sm text-white/90 leading-snug">
+          {member.description}
+        </p>
+        <div class="flex gap-2">
+          {
+            member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`LinkedIn de ${member.name}`}
+                class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:border-brand/60 hover:bg-brand/20"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                >
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" />
+                </svg>
+              </a>
+            )
+          }
+          {
+            member.twitter && (
+              <a
+                href={member.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Twitter de ${member.name}`}
+                class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:border-brand/60 hover:bg-brand/20"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  class="h-4 w-4"
+                >
+                  <path d="M18 4h3l-7.5 8.6L22 21h-6.6l-5.2-6.3L4.4 21H1.4l8-9.2L1 4h6.7l4.7 5.7L18 4z" />
+                </svg>
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </div>
+    <div class="px-5 py-4">
+      <h3 class="font-display text-lg font-bold text-white">{member.name}</h3>
+      <p class="text-sm text-fg-muted">{member.role}</p>
+    </div>
+  </div>
+</article>

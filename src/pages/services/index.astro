@@ -1,0 +1,268 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Button from "../../components/Button.astro";
+import Meter from "../../components/Meter.astro";
+import { auditServices, trainingServices } from "../../data/services";
+
+const meterIcons = {
+  necessity: `<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>`,
+  technicity: `<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5"/>`,
+  cost: `<circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/>`,
+};
+---
+
+<Layout
+  title="Trackflaw | Nos services"
+  description="La sécurité offensive et les audits techniques sont le cœur de métier de Trackflaw. Découvrez nos différents services et formations."
+>
+  <Section size="xl" containerSize="lg" class="pt-32 sm:pt-40">
+    <SectionTitle
+      eyebrow="Catalogue"
+      title='Nos <span class="text-gradient">services</span>'
+      subtitle="Dans le contexte de menace actuel, l'anticipation des actions des acteurs malveillants est primordiale. Les audits techniques offensifs permettent de déceler les faiblesses d'un système avant sa compromission.<br><br><strong>La sécurité offensive et les audits techniques sont le cœur de métier de Trackflaw.</strong>"
+    />
+
+    <div class="reveal mt-12 flex justify-center">
+      <Button href="#audit" variant="ghost">
+        Consulter nos activités
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-4 w-4"
+        >
+          <path d="m6 9 6 6 6-6"></path>
+        </svg>
+      </Button>
+    </div>
+  </Section>
+
+  <Section size="md" containerSize="md" class="!py-0">
+    <GlassCard hover class="reveal">
+      <h3 class="font-display text-2xl font-bold text-white mb-4">
+        🤔 Quelle démarche choisir pour son test d'intrusion ?
+      </h3>
+      <p class="text-fg-muted leading-relaxed">
+        Dans l'univers dynamique de la cybersécurité, marqué par une
+        sophistication croissante des cybermenaces, l'importance des tests
+        d'intrusion s'est affirmée pour les organisations désireuses de
+        <strong class="text-white">sauvegarder leurs infrastructures
+          informatiques</strong> et <strong class="text-white">leurs données
+          critiques</strong>.
+      </p>
+      <p class="mt-3 text-fg-muted leading-relaxed">
+        Ces évaluations, connues également sous les appellations de tests en
+        <strong class="text-white">boîte noire, boîte grise, et boîte
+          blanche</strong>, constituent des éléments essentiels à l'intégrité
+        d'une politique de sécurité informatique efficace. Ils proposent chacun
+        une méthode distincte pour examiner la fiabilité des systèmes
+        informatiques.
+      </p>
+      <video
+        class="mt-6 w-full rounded-2xl border border-white/10 shadow-[0_0_60px_-15px_rgba(23,178,255,0.4)]"
+        src="https://blog.trackflaw.com/images/quelle-d%C3%A9marche-test-intrusion/video.mp4"
+        controls
+        autoplay
+        muted
+        loop
+        playsinline
+        title="Comprendre la différence entre la boîte noire, grise et blanche"
+      >
+      </video>
+    </GlassCard>
+  </Section>
+
+  <Section id="audit" size="lg" containerSize="lg">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft">
+        Audits techniques
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+        Nos audits techniques
+      </h2>
+      <p class="text-fg-muted">
+        <strong>Trackflaw</strong> propose plusieurs audits techniques afin
+        d'évaluer la sécurité des actifs d'une entreprise.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {
+        auditServices.map((s, i) => (
+          <GlassCard
+            hover
+            class={`reveal reveal-delay-${(i % 4) + 1} flex flex-col`}
+          >
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-brand-soft shadow-[0_0_25px_-10px_rgba(23,178,255,0.5)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                set:html={s.icon}
+              />
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">
+              {s.title}
+            </h3>
+            <p class="mt-3 flex-1 text-sm text-fg-muted leading-relaxed">
+              {s.description}
+            </p>
+            <p class="mt-3 text-sm text-fg-muted leading-relaxed">
+              <strong class="text-white">Exemple de risque :</strong> {s.example}
+            </p>
+            <div class="mt-5 space-y-3 border-t border-white/5 pt-5">
+              <Meter
+                label="Nécessité"
+                level={s.necessity.level}
+                value={s.necessity.value}
+                icon={meterIcons.necessity}
+              />
+              <Meter
+                label="Technicité"
+                level={s.technicity.level}
+                value={s.technicity.value}
+                icon={meterIcons.technicity}
+              />
+              <Meter
+                label="Coût"
+                level={s.cost.level}
+                value={s.cost.value}
+                icon={meterIcons.cost}
+              />
+            </div>
+          </GlassCard>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section id="réponse-à-incident" size="md" containerSize="md">
+    <div class="reveal mb-8 flex flex-col gap-3">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft">
+        Crise & investigation
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+        Réponse à incident
+      </h2>
+    </div>
+    <GlassCard hover class="reveal">
+      <p class="text-fg-muted leading-relaxed">
+        Trackflaw est en mesure d'intervenir sur des incidents de sécurité
+        affectant votre système d'information. Nous vous aidons dans votre
+        gestion de crise en vous accompagnant dans vos démarches d'investigation
+        numérique.
+      </p>
+      <p class="mt-4 font-display text-white">
+        Exemple de réponse à incident :
+      </p>
+      <ol class="mt-4 space-y-3">
+        {
+          [
+            ["Prise de contact", "vous prenez contact avec nous à travers un point téléphonique afin de détailler votre incident."],
+            ["Évaluation de l'incident", "nous étudions avec vous l'ampleur de la crise et évaluons le périmètre touché."],
+            ["Recherche et analyse", "nous analysons et concluons sur les potentiels points d'entrée des attaquants."],
+            ["Élimination de la menace", "nous vous aidons à éliminer les éléments malveillants et à organiser la remise en état."],
+            ["Clôture de la crise", "nous effectuons un bilan de l'intervention afin de clôturer la gestion de crise."],
+          ].map(([title, body], i) => (
+            <li class="flex gap-4">
+              <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand/40 bg-brand/10 font-display text-sm font-bold text-brand-soft">
+                {i + 1}
+              </span>
+              <p class="text-fg-muted leading-relaxed">
+                <strong class="text-white">{title} : </strong>
+                {body}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </GlassCard>
+  </Section>
+
+  <Section id="formations" size="lg" containerSize="lg">
+    <div class="reveal mb-12 flex flex-col gap-3">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft">
+        Pédagogie
+      </span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">
+        Formations
+      </h2>
+      <p class="text-fg-muted">
+        <strong>Trackflaw</strong> propose plusieurs types de formations afin
+        d'aider vos collaborateurs à appréhender les différents concepts de la
+        sécurité informatique.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        trainingServices.map((s, i) => (
+          <GlassCard
+            hover
+            class={`reveal reveal-delay-${(i % 4) + 1} flex flex-col`}
+          >
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-brand-soft shadow-[0_0_25px_-10px_rgba(23,178,255,0.5)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                set:html={s.icon}
+              />
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">
+              {s.title}
+            </h3>
+            <p class="mt-3 flex-1 text-sm text-fg-muted leading-relaxed">
+              {s.description}
+            </p>
+            <p class="mt-3 text-sm text-fg-muted leading-relaxed">
+              <strong class="text-white">Exemple de cours :</strong> {s.example}
+            </p>
+            <div class="mt-5 space-y-3 border-t border-white/5 pt-5">
+              <Meter
+                label="Nécessité"
+                level={s.necessity.level}
+                value={s.necessity.value}
+                icon={meterIcons.necessity}
+              />
+              <Meter
+                label="Difficulté"
+                level={s.technicity.level}
+                value={s.technicity.value}
+                icon={meterIcons.technicity}
+              />
+              <Meter
+                label="Coût"
+                level={s.cost.level}
+                value={s.cost.value}
+                icon={meterIcons.cost}
+              />
+            </div>
+          </GlassCard>
+        ))
+      }
+    </div>
+
+    <div class="reveal mt-16 flex flex-wrap items-center justify-center gap-3">
+      <Button href="/commande" variant="primary">Commander un audit</Button>
+      <Button href="/méthodologie" variant="ghost">Voir la méthodologie</Button>
+    </div>
+  </Section>
+</Layout>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  id?: string;
+  hover?: boolean;
+  strong?: boolean;
+  class?: string;
+  as?: "div" | "article" | "li";
+}
+const {
+  id,
+  hover = false,
+  strong = false,
+  class: className = "",
+  as: Tag = "div",
+} = Astro.props;
+
+const base = strong ? "glass-strong" : "glass";
+const hoverCls = hover ? "glass-hover" : "";
+---
+
+<Tag id={id} class={`${base} ${hoverCls} p-6 sm:p-8 ${className}`}>
+  <slot />
+</Tag>

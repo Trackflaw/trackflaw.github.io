@@ -1,0 +1,119 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+
+const steps = [
+  {
+    title: "Prise de contact",
+    body: "Cette première prise de contact par email permet de planifier une réunion ayant pour objectif de qualifier votre besoin. Pensez à établir vos contraintes temporelles en amont de la réunion.",
+    legend: "Demande de mission",
+    icon: `<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`,
+  },
+  {
+    title: "Qualification du besoin",
+    body: "Un entretien téléphonique permet d'évaluer vos besoins en audit technique et de vous conseiller sur les meilleurs choix possibles.<br><br>À la suite de ce point, une proposition technique et commerciale est établie et vous est transmise dans les plus brefs délais.",
+    legend: "Appel téléphonique",
+    icon: `<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>`,
+  },
+  {
+    title: "Validation de la proposition",
+    body: "À la réception de la proposition technique et financière, vous avez un délai de deux semaines pour prendre votre décision. N'hésitez pas à nous recontacter pour améliorer cette proposition.",
+    legend: "Analyse de la PTF",
+    icon: `<path d="M21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/>`,
+  },
+  {
+    title: "Réunion de lancement",
+    body: "À la suite de la validation de la proposition, une réunion de lancement est planifiée afin d'organiser l'audit. Ce point permet d'établir le périmètre à auditer ainsi que les différents prérequis nécessaires à la prestation.",
+    legend: "Organisation de l'audit",
+    icon: `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>`,
+  },
+  {
+    title: "Démarrage de l'audit",
+    body: "Lors du démarrage de l'audit, un mail d'information vous est communiqué le matin avant le lancement des tests pour vous rappeler les enjeux de la prestation.<br><br>Lors de la découverte d'une vulnérabilité critique, une communication immédiate est effectuée au responsable d'audit à travers un court document.",
+    legend: "Démarrage des tests",
+    icon: `<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>`,
+  },
+  {
+    title: "Rédaction du livrable",
+    body: "À la fin des tests, un email récapitulatif de la prestation vous est transmis. Quelques jours sont nécessaires à la rédaction du rapport d'audit.<br><br>La livraison du document s'effectue quelques jours après la fin de la mission à travers notre plateforme d'échange sécurisé.",
+    legend: "Rédaction du rapport",
+    icon: `<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/>`,
+  },
+  {
+    title: "Réunion de restitution",
+    body: "Afin d'effectuer un bilan de l'audit, une réunion de restitution est proposée à la suite de la livraison du rapport. Elle a pour objectif de communiquer sur les forces et les faiblesses découvertes durant la mission et d'exposer les risques impactant votre structure. Cette présentation est accessible à un public non technique (PDG, DSI, etc).",
+    legend: "Bilan de l'audit",
+    icon: `<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>`,
+  },
+  {
+    title: "Facture et bilan",
+    body: "Lorsque la mission est totalement achevée, la facture finale vous est communiquée. Un second document vous demandant de noter la prestation est aussi transmis. N'hésitez pas à nous faire part de votre ressenti et de votre satisfaction !",
+    legend: "Et si nous allions plus loin ?",
+    icon: `<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>`,
+  },
+];
+---
+
+<Layout
+  title="Trackflaw | Notre méthodologie"
+  description="Chez Trackflaw, les audits techniques sont le cœur de métier. Ils suivent une méthodologie technique et organisationnelle aussi complète qu'exigeante."
+>
+  <Section size="xl" containerSize="md" class="pt-32 sm:pt-40">
+    <SectionTitle
+      eyebrow="Méthodologie"
+      title='Notre <span class="text-gradient">méthodologie</span>'
+      subtitle="Chez Trackflaw, les audits techniques sont le cœur de métier. Ils suivent une méthodologie aussi complète qu'exigeante.<br><br>La réussite d'une mission réside dans la communication et la collaboration de tous ses acteurs. Cette page décrit le parcours type d'un audit réalisé par Trackflaw."
+    />
+
+    <ol class="relative mt-20 space-y-6 before:absolute before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-brand/0 before:via-brand/40 before:to-brand/0 before:left-6 md:before:left-1/2 md:before:-translate-x-1/2">
+      {
+        steps.map((s, i) => {
+          const isLeft = i % 2 === 0;
+          return (
+            <li
+              id={`step-${i + 1}`}
+              class={`relative md:flex ${isLeft ? "md:justify-start" : "md:justify-end"}`}
+            >
+              <span
+                aria-hidden="true"
+                class="absolute left-0 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-brand/40 bg-bg-2/80 text-brand-soft backdrop-blur-md shadow-[0_0_30px_-8px_rgba(23,178,255,0.6)] md:left-1/2 md:-translate-x-1/2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-5 w-5"
+                  set:html={s.icon}
+                />
+              </span>
+              <GlassCard
+                hover
+                class={`reveal ml-24 md:ml-0 md:w-[calc(50%-3.5rem)] ${isLeft ? "md:mr-auto" : "md:ml-auto"}`}
+              >
+                <span class="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft">
+                  Étape {i + 1}
+                </span>
+                <h3 class="mt-3 font-display text-xl font-bold text-white">
+                  {s.title}
+                </h3>
+                <p
+                  class="mt-3 text-sm text-fg-muted leading-relaxed"
+                  set:html={s.body}
+                />
+                <p class="mt-4 text-xs uppercase tracking-[0.18em] text-fg-dim">
+                  {s.legend}
+                </p>
+              </GlassCard>
+            </li>
+          );
+        })
+      }
+    </ol>
+  </Section>
+</Layout>

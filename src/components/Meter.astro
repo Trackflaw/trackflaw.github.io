@@ -1,0 +1,50 @@
+---
+interface Props {
+  label: string;
+  level: "low" | "medium" | "high" | "very-high";
+  value: number;
+  icon: string;
+}
+const { label, level, value, icon } = Astro.props;
+
+const colors = {
+  low: "from-emerald-500/70 to-emerald-400",
+  medium: "from-amber-500/70 to-amber-400",
+  high: "from-orange-500/70 to-orange-400",
+  "very-high": "from-rose-500/80 to-rose-400",
+};
+
+const labels = {
+  low: "Faible",
+  medium: "Moyenne",
+  high: "Élevée",
+  "very-high": "Très élevée",
+};
+---
+
+<div class="flex flex-col gap-1.5">
+  <div class="flex items-center justify-between text-xs">
+    <span class="inline-flex items-center gap-2 font-display text-fg-muted">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-3.5 w-3.5"
+        set:html={icon}
+      />
+      {label}
+    </span>
+    <span class="text-fg-dim">{labels[level]}</span>
+  </div>
+  <div class="h-1.5 overflow-hidden rounded-full bg-white/5">
+    <div
+      class={`h-full rounded-full bg-gradient-to-r ${colors[level]} shadow-[0_0_12px_rgba(23,178,255,0.4)]`}
+      style={`width: ${value}%`}
+    >
+    </div>
+  </div>
+</div>

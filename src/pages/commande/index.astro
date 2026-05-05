@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import Button from "../../components/Button.astro";
+
+const steps = [
+  {
+    label: "Étape 1",
+    title: "Choisir votre offre",
+    body: "Trackflaw possède un large catalogue de prestations. Avez-vous eu le temps de consulter notre catalogue ? Avez-vous des questions ? Contactez-nous !",
+    icon: `<path d="M21 21l-4.34-4.34"/><circle cx="11" cy="11" r="8"/>`,
+    cta: { label: "Consulter nos offres", href: "/services" },
+    legend: "Analyse de nos offres",
+  },
+  {
+    label: "Étape 2",
+    title: "Planifier votre besoin",
+    body: "Afin de répondre rapidement et efficacement à votre demande, il est conseillé d'établir une première planification de votre besoin avant la première prise de contact.<br><br><strong>Nous adaptons nos disponibilités en fonction de vos contraintes.</strong>",
+    icon: `<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/>`,
+    legend: "Planification de l'audit",
+  },
+  {
+    label: "Étape 3",
+    title: "Nous contacter",
+    body: "Pour planifier un rendez-vous afin d'évaluer vos besoins, vous pouvez nous contacter par email à <strong>commande@trackflaw.com</strong>. N'hésitez pas à détailler votre besoin ainsi que vos disponibilités. Vous recevrez une réponse dans les plus brefs délais.<br><br>Merci pour votre confiance !",
+    icon: `<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>`,
+    cta: { label: "Nous écrire", href: "mailto:commande@trackflaw.com" },
+    legend: "Prise de contact",
+  },
+];
+---
+
+<Layout
+  title="Trackflaw | Commander une prestation"
+  description="Trackflaw possède un large catalogue de prestations. Découvrez le parcours en 3 étapes pour commander un audit."
+>
+  <Section size="xl" containerSize="md" class="pt-32 sm:pt-40">
+    <SectionTitle
+      eyebrow="Commande"
+      title='Commander une <span class="text-gradient">prestation</span>'
+      subtitle="Notre parcours en 3 étapes pour démarrer votre audit en toute sérénité."
+    />
+
+    <ol class="relative mt-20 space-y-8 before:absolute before:left-6 before:top-0 before:h-full before:w-px before:bg-gradient-to-b before:from-brand/0 before:via-brand/40 before:to-brand/0 md:before:left-8">
+      {
+        steps.map((s, i) => (
+          <li class="relative">
+            <span
+              aria-hidden="true"
+              class="absolute left-6 top-1/2 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-brand/40 bg-bg-2/80 text-brand-soft backdrop-blur-md shadow-[0_0_30px_-8px_rgba(23,178,255,0.6)] md:left-8"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-5 w-5"
+                set:html={s.icon}
+              />
+            </span>
+            <GlassCard
+              hover
+              class={`reveal reveal-delay-${(i % 4) + 1} ml-20 md:ml-24`}
+            >
+              <div class="flex flex-col gap-3">
+                <span class="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-soft">
+                  {s.label}
+                </span>
+                <h3 class="font-display text-2xl font-bold text-white">
+                  {s.title}
+                </h3>
+                <p
+                  class="text-fg-muted leading-relaxed"
+                  set:html={s.body}
+                />
+                {s.cta && (
+                  <div class="mt-4">
+                    <Button href={s.cta.href} variant="ghost" size="sm">
+                      {s.cta.label}
+                    </Button>
+                  </div>
+                )}
+                <p class="mt-2 text-xs uppercase tracking-[0.18em] text-fg-dim">
+                  {s.legend}
+                </p>
+              </div>
+            </GlassCard>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+</Layout>

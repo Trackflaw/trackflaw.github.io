@@ -1,0 +1,28 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import GlassCard from "../../components/GlassCard.astro";
+---
+
+<Layout title="Trackflaw | 1337" description="" noindex>
+  <Section size="xl" containerSize="md" class="pt-32 sm:pt-40">
+    <div class="reveal text-center">
+      <p class="font-mono text-sm uppercase tracking-[0.4em] text-brand-soft/80">
+        // hidden
+      </p>
+      <h1 class="mt-6 font-display text-6xl font-bold tracking-tight">
+        <span class="text-gradient">1337</span>
+      </h1>
+    </div>
+    <GlassCard hover class="reveal mt-12 text-center">
+      <img
+        src="/1337/secret.png.enc.png"
+        alt=""
+        class="mx-auto max-w-full rounded-xl border border-white/10"
+      />
+      <p class="mt-6 font-mono text-xs text-fg-dim">
+        encrypt.py · /1337/encrypt.py
+      </p>
+    </GlassCard>
+  </Section>
+</Layout>

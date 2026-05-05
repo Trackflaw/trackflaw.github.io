@@ -1,0 +1,152 @@
+---
+import { socialUrls } from "../data/social";
+import {
+  buildLinkedInEmbedUrl,
+  fetchLatestLinkedInActivityId,
+} from "../utils/linkedin";
+
+// Fetched at build time (SSR) to ship a non-empty iframe in the initial HTML.
+// The client script below also re-fetches on page load to stay live.
+const initialActivityId = await fetchLatestLinkedInActivityId();
+const initialEmbedUrl = initialActivityId
+  ? buildLinkedInEmbedUrl(initialActivityId)
+  : null;
+---
+
+<div class="reveal glass relative overflow-hidden p-0">
+  <header
+    class="flex items-center justify-between gap-3 border-b border-white/5 px-6 py-4"
+  >
+    <div class="flex items-center gap-3">
+      <span
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[#0a66c2] shadow-[0_0_24px_-8px_rgba(10,102,194,0.7)]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          aria-hidden="true"
+          class="h-5 w-5"
+        >
+          <path
+            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.339 18.337v-8.27H5.667v8.27zM7.003 8.91a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.335 9.427v-4.529c0-2.42-.524-4.286-3.351-4.286-1.36 0-2.273.747-2.647 1.456h-.039v-1.232H9.738v8.591h2.681v-4.252c0-1.121.214-2.207 1.604-2.207 1.371 0 1.39 1.282 1.39 2.279v4.18z"
+          />
+        </svg>
+      </span>
+      <div>
+        <p class="font-display text-sm font-semibold text-white">Trackflaw</p>
+        <p class="text-xs text-fg-dim">Dernière publication</p>
+      </div>
+    </div>
+    <a
+      href={socialUrls.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:border-[#0a66c2]/60 hover:bg-[#0a66c2]/15"
+    >
+      Suivre
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-3.5 w-3.5"
+      >
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </header>
+
+  <div data-linkedin-frame class="aspect-[4/5] w-full bg-white sm:aspect-[5/4]">
+    {
+      initialEmbedUrl ? (
+        <iframe
+          data-linkedin-embed
+          title="Dernier post Trackflaw sur LinkedIn"
+          src={initialEmbedUrl}
+          loading="lazy"
+          allowfullscreen
+          class="h-full w-full border-0"
+        />
+      ) : (
+        <div
+          data-linkedin-loading
+          class="flex h-full flex-col items-center justify-center gap-3 bg-bg-2 p-8 text-center"
+        >
+          <span class="inline-flex h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-brand-soft" />
+          <p class="text-sm text-fg-muted">
+            Récupération de la dernière publication…
+          </p>
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<script>
+  import {
+    LINKEDIN_LATEST_ENDPOINT,
+    isValidActivityId,
+    buildLinkedInEmbedUrl,
+  } from "../utils/linkedin";
+  import { socialUrls } from "../data/social";
+
+  const renderFallback = (frame: Element) => {
+    frame.innerHTML = "";
+    const wrap = document.createElement("div");
+    wrap.className =
+      "flex h-full flex-col items-center justify-center gap-4 bg-bg-2 p-8 text-center";
+    wrap.innerHTML = `
+      <p class="font-display text-base text-white">Suivez-nous pour ne rien manquer.</p>
+      <p class="max-w-sm text-sm text-fg-muted">Veille, retours d'audit et publications techniques de l'équipe Trackflaw.</p>
+      <a href="${socialUrls.linkedin}" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 rounded-full bg-[#0a66c2] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_24px_-8px_rgba(10,102,194,0.7)] transition-all duration-300 hover:shadow-[0_0_36px_-6px_rgba(10,102,194,0.9)]">
+        Voir la page Trackflaw
+      </a>`;
+    frame.appendChild(wrap);
+  };
+
+  const ensureIframe = (frame: Element, src: string) => {
+    let iframe = frame.querySelector<HTMLIFrameElement>(
+      "[data-linkedin-embed]",
+    );
+    if (iframe) {
+      if (iframe.src !== src) iframe.src = src;
+      return;
+    }
+    frame.innerHTML = "";
+    iframe = document.createElement("iframe");
+    iframe.dataset.linkedinEmbed = "";
+    iframe.title = "Dernier post Trackflaw sur LinkedIn";
+    iframe.src = src;
+    iframe.loading = "lazy";
+    iframe.allowFullscreen = true;
+    iframe.className = "h-full w-full border-0";
+    frame.appendChild(iframe);
+  };
+
+  const refresh = async () => {
+    const frame = document.querySelector<HTMLElement>("[data-linkedin-frame]");
+    if (!frame) return;
+    try {
+      const res = await fetch(LINKEDIN_LATEST_ENDPOINT, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const id = (await res.text()).trim();
+      if (!isValidActivityId(id)) throw new Error("invalid id");
+      ensureIframe(frame, buildLinkedInEmbedUrl(id));
+    } catch {
+      const hasIframe = frame.querySelector("[data-linkedin-embed]");
+      if (!hasIframe) renderFallback(frame);
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", refresh);
+  } else {
+    refresh();
+  }
+</script>
