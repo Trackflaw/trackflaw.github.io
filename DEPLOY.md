@@ -1,4 +1,4 @@
-# Déploiement — Cloudflare Pages
+# Déploiement, Cloudflare Pages
 
 ## 1. Créer le projet
 
@@ -27,14 +27,14 @@ Aucune obligatoire pour la V1. Si plus tard tu ajoutes Plausible, Sentry, etc, l
 1. **Custom domains** → ajouter `trackflaw.com` et `www.trackflaw.com`.
 2. Si le DNS est déjà géré par Cloudflare, l'opération est automatique.
 3. Sinon, suivre les instructions DNS affichées (ajout d'un CNAME vers `<projet>.pages.dev`).
-4. **Supprimer** le fichier `public/CNAME` une fois la migration confirmée — il n'est utile que pour GitHub Pages.
+4. **Supprimer** le fichier `public/CNAME` une fois la migration confirmée, il n'est utile que pour GitHub Pages.
 
 ## 5. Headers et redirects
 
 Déjà configurés via :
 
-- **`public/_headers`** — sécurité (HSTS, X-Frame-Options, etc.) et caching agressif sur les assets immutables (`/_astro/*`, `/assets/videos/*`).
-- **`public/_redirects`** — redirections 301 (slash final → version sans slash, etc.).
+- **`public/_headers`**, sécurité (HSTS, X-Frame-Options, etc.) et caching agressif sur les assets immutables (`/_astro/*`, `/assets/videos/*`).
+- **`public/_redirects`**, redirections 301 (slash final → version sans slash, etc.).
 
 Cloudflare Pages les lit automatiquement à la racine du `dist/`.
 

@@ -62,7 +62,7 @@
     letter-spacing: -0.005em;
   }
 
-  /* Layered, fixed-position background — spotlight + conic */
+  /* Layered, fixed-position background, spotlight + conic */
   body::before {
     content: "";
     position: fixed;
@@ -201,7 +201,7 @@
     font-family: var(--font-display);
   }
 
-  /* Spotlight that follows the cursor — set --mx and --my via JS */
+  /* Spotlight that follows the cursor, set --mx and --my via JS */
   .spotlight-card {
     --mx: 50%;
     --my: 50%;
@@ -298,7 +298,7 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
-  /* Glass surfaces — neon edition: more saturated borders, neon shadow when hovered */
+  /* Glass surfaces, neon edition: more saturated borders, neon shadow when hovered */
   .glass {
     position: relative;
     background:
@@ -373,7 +373,7 @@
     box-shadow: var(--shadow-glow-lg);
   }
 
-  /* Title gradient — bright white into luminous light blue, signature look */
+  /* Title gradient, bright white into luminous light blue, signature look */
   .text-gradient {
     background: linear-gradient(
       135deg,
@@ -457,7 +457,7 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
-  /* Neon underline — used for inline accents */
+  /* Neon underline, used for inline accents */
   .neon-underline {
     position: relative;
   }

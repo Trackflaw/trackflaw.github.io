@@ -76,7 +76,7 @@ const initCarousel = (root: CarouselRoot) => {
           /* noop */
         }
       } else {
-        // Vertical scroll wins — release the swipe
+        // Vertical scroll wins, release the swipe
         dragging = false;
         track.classList.remove("is-dragging");
         return;
