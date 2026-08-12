@@ -1,0 +1,29 @@
+{
+  "source": "https://fr.linkedin.com/company/trackflaw",
+  "posts": [
+    {
+      "id": "7475582612699435008",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475582612699435008",
+      "publishedAt": "2026-06-24T16:16:24.476Z",
+      "text": "Pourquoi la cybersécurité de la France semble-t-elle si mauvaise actuellement ?\n\nCe n'est pas qu'une impression mais bien une réalité.\n\nBilan des fuites de données au premier trimestre 2026 :\n- 43 millions d'utilisateurs France Travail\n- 33 millions d'assurés de mutuelles\n- 11,7 millions de comptes ANTS...\n\nLa quasi-totalité des données des citoyens français sont accessibles... en open source.\n\nMais comment en est-on arrivé là ?",
+      "image": null
+    },
+    {
+      "id": "7462164691834884096",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7462164691834884096",
+      "publishedAt": "2026-05-18T15:38:22.849Z",
+      "text": "Le 11 mai dernier, les outils de développement de Mistral AI ont été frappés par une attaque \"supply chain\" d'une précision chirurgicale.\n\nLe groupe TeamPCP a réussi à injecter du code malveillant dans les versions PyPI et npm, exploitant l'accès d'un développeur pour diffuser le malware Mini Shai-Hulud à grande échelle.\n\n🔷 𝗧𝗟;𝗗𝗥\n\nLa compromission touche directement le package PyPI mistralai en version 2.4.6 et les versions npm 2.2.2 à 2.2.4. Ce n'est pas une simple fuite de données mais une prise de contrôle des pipelines de publication officiels.\n\nLe paquet de mistral n'est pas le seul impacté. La liste est... très longue : squawk, uipath, tallyui, beproduct...\n\nLe malware est signé avec des certificats valides, ce qui rend les outils de scan traditionnels totalement inefficaces face à cette menace \"certifiée\".\n\n🔷 𝗥𝗶𝘀𝗾𝘂𝗲𝘀\n\nLe risque principal est l'exfiltration massive des secrets cloud et des clés SSH. Pas de ransomware ou de cryptominer cette fois...\n\nPlus grave encore, le malware installe une bombe logique sous forme de service système. \n\nSi ce daemon détecte que vous révoquez vos accès GitHub après une alerte, il réagit par un sabotage immédiat en effaçant l'intégralité de votre répertoire utilisateur (rm -rf ~). 💣\n\n🔷 𝗗𝗶𝗮𝗴𝗻𝗼𝘀𝘁𝗶𝗰\n\nPour savoir si vous êtes exposé:\n\npip show mistralai | grep Version # Si version 2.4.6 -> ☠️\nls ~/.config/systemd/user/gh-token-monitor.service # Pour détecter la présence de la persistance\n\nSi vous décelez la persistance, avant toute modification de vos secrets : systemctl --user stop gh-token-monitor.service\n\nSinon, adieu à votre /home 😂\n\nEt le mois de mai n'est pas encore terminé ! 🫠",
+      "image": {
+        "width": 800,
+        "height": 220
+      }
+    },
+    {
+      "id": "7456979110339198976",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7456979110339198976",
+      "publishedAt": "2026-05-04T08:12:43.877Z",
+      "text": "732 octets de Python. C’est tout ce qu’il faut pour obtenir les privilèges root sur la quasi-totalité des distributions Linux majeures (Ubuntu, RHEL, Amazon Linux, SUSE) publiées depuis 2017.\n\n🔷 𝗧𝗟;𝗗𝗥\n\nLe 29 avril une équipe de chercheur publie une des vulnérabilités les plus violentes de 2026.\n\nBaptisée \"Copy Fail\", cette faiblesse (CVE-2026-31431) est une erreur de logique déterministe dans le module cryptographique algif_aead du noyau Linux.\n\n🔷 𝗥𝗶𝘀𝗾𝘂𝗲𝘀\n\nContrairement à beaucoup d'exploits, celui-ci ne repose sur aucune condition : il fonctionne à 100% du temps, sur toutes les architectures.\n\nDe plus, l'attaquant modifie la version en mémoire vive (RAM) de fichiers sensibles (comme /usr/bin/su) sans toucher au fichier sur le disque physique -> rend très difficile la détection.\n\nAutre exemple, vu que la zone mémoire est partagée par le noyau entre l'hôte et les conteneurs, une modification effectuée depuis un conteneur compromet immédiatement l'hôte -> évasion de conteneur 🤯\n\n🔷 𝗖𝗼𝗿𝗿𝗲𝗰𝘁𝗶𝗼𝗻\n\nLe chantier de correction est chaotique et varie beaucoup entre les distributions.\n\n✅ Patch disponible : AlmaLinux, ArchLinux (💙), CloudLinux, openSUSE\n⚠️ En cours : Ubuntu (un patch du paquet kmod agit en quick fix) et SUSE Linux Enterprise (pas de quickfix)\n❌ Pas de correction : Amazon Linux, Red Hat, Debian, Oracle Linus -> tout est en attente de correction\n\nUn des quickfix efficace est de désactiver le module via initcall_blacklist=algif_aead_init dans les paramètres de boot (GRUB)... Sauf que ce n'est pas applicable partout... 🫠\n\nLe mois de mai s'annonce sportif !",
+      "image": null
+    }
+  ]
+}

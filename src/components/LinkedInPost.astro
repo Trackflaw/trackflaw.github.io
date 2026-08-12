@@ -1,19 +1,34 @@
 ---
 import { socialUrls } from "../data/social";
 import {
+  latestLinkedInPost,
   buildLinkedInEmbedUrl,
-  fetchLatestLinkedInActivityId,
+  estimateEmbedHeight,
+  formatLinkedInDate,
 } from "../utils/linkedin";
 
-// Fetched at build time (SSR) to ship a non-empty iframe in the initial HTML.
-// The client script below also re-fetches on page load to stay live.
-const initialActivityId = await fetchLatestLinkedInActivityId();
-const initialEmbedUrl = initialActivityId
-  ? buildLinkedInEmbedUrl(initialActivityId)
-  : null;
+// Read from the repo, not from the network: see `src/utils/linkedin.ts`.
+const post = latestLinkedInPost();
+const embedUrl = post ? buildLinkedInEmbedUrl(post.id) : null;
+
+// A cross-origin iframe cannot size itself, so the height is decided here,
+// once per breakpoint, from the width the iframe actually gets. Those widths
+// come from `Container` (`px-5 sm:px-8`) and the `max-w-3xl` wrapper in
+// `index.astro`: about 340px on a phone, and between 704 and 768px above the
+// `md` breakpoint. Each step uses the narrowest width of its range, since a
+// narrower iframe wraps the text into more lines and needs more height.
+const heights = post
+  ? {
+      sm: estimateEmbedHeight(post, 340),
+      md: estimateEmbedHeight(post, 704),
+    }
+  : { sm: 0, md: 0 };
 ---
 
-<div class="reveal glass relative overflow-hidden p-0">
+<div
+  class="reveal glass relative overflow-hidden p-0"
+  style={`--embed-h-sm: ${heights.sm}px; --embed-h-md: ${heights.md}px;`}
+>
   <header
     class="flex items-center justify-between gap-3 border-b border-white/5 px-6 py-4"
   >
@@ -35,7 +50,9 @@ const initialEmbedUrl = initialActivityId
       </span>
       <div>
         <p class="font-display text-sm font-semibold text-white">Trackflaw</p>
-        <p class="text-xs text-fg-dim">Dernière publication</p>
+        <p class="text-xs text-fg-dim">
+          {post ? formatLinkedInDate(post.publishedAt) : "Dernière publication"}
+        </p>
       </div>
     </div>
     <a
@@ -61,92 +78,48 @@ const initialEmbedUrl = initialActivityId
     </a>
   </header>
 
-  <div data-linkedin-frame class="aspect-[4/5] w-full bg-white sm:aspect-[5/4]">
-    {
-      initialEmbedUrl ? (
-        <iframe
-          data-linkedin-embed
-          title="Dernier post Trackflaw sur LinkedIn"
-          src={initialEmbedUrl}
-          loading="lazy"
-          allowfullscreen
-          class="h-full w-full border-0"
-        />
-      ) : (
-        <div
-          data-linkedin-loading
-          class="flex h-full flex-col items-center justify-center gap-3 bg-bg-2 p-8 text-center"
+  {
+    embedUrl ? (
+      <iframe
+        class="embed-frame w-full border-0 bg-white"
+        title="Dernière publication de Trackflaw sur LinkedIn"
+        src={embedUrl}
+        loading="lazy"
+        allowfullscreen
+      />
+    ) : (
+      <div class="flex flex-col items-center justify-center gap-4 bg-bg-2 p-10 text-center">
+        <p class="font-display text-base text-white">
+          Suivez-nous pour ne rien manquer.
+        </p>
+        <p class="max-w-sm text-sm text-fg-muted">
+          Veille, retours d'audit et publications techniques de l'équipe
+          Trackflaw.
+        </p>
+        <a
+          href={socialUrls.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-[#0a66c2] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_24px_-8px_rgba(10,102,194,0.7)] transition-all duration-300 hover:shadow-[0_0_36px_-6px_rgba(10,102,194,0.9)]"
         >
-          <span class="inline-flex h-8 w-8 animate-spin rounded-full border-2 border-white/15 border-t-brand-soft" />
-          <p class="text-sm text-fg-muted">
-            Récupération de la dernière publication…
-          </p>
-        </div>
-      )
-    }
-  </div>
+          Voir la page Trackflaw
+        </a>
+      </div>
+    )
+  }
 </div>
 
-<script>
-  import {
-    LINKEDIN_LATEST_ENDPOINT,
-    isValidActivityId,
-    buildLinkedInEmbedUrl,
-  } from "../utils/linkedin";
-  import { socialUrls } from "../data/social";
-
-  const renderFallback = (frame: Element) => {
-    frame.innerHTML = "";
-    const wrap = document.createElement("div");
-    wrap.className =
-      "flex h-full flex-col items-center justify-center gap-4 bg-bg-2 p-8 text-center";
-    wrap.innerHTML = `
-      <p class="font-display text-base text-white">Suivez-nous pour ne rien manquer.</p>
-      <p class="max-w-sm text-sm text-fg-muted">Veille, retours d'audit et publications techniques de l'équipe Trackflaw.</p>
-      <a href="${socialUrls.linkedin}" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 rounded-full bg-[#0a66c2] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_24px_-8px_rgba(10,102,194,0.7)] transition-all duration-300 hover:shadow-[0_0_36px_-6px_rgba(10,102,194,0.9)]">
-        Voir la page Trackflaw
-      </a>`;
-    frame.appendChild(wrap);
-  };
-
-  const ensureIframe = (frame: Element, src: string) => {
-    let iframe = frame.querySelector<HTMLIFrameElement>(
-      "[data-linkedin-embed]",
-    );
-    if (iframe) {
-      if (iframe.src !== src) iframe.src = src;
-      return;
-    }
-    frame.innerHTML = "";
-    iframe = document.createElement("iframe");
-    iframe.dataset.linkedinEmbed = "";
-    iframe.title = "Dernier post Trackflaw sur LinkedIn";
-    iframe.src = src;
-    iframe.loading = "lazy";
-    iframe.allowFullscreen = true;
-    iframe.className = "h-full w-full border-0";
-    frame.appendChild(iframe);
-  };
-
-  const refresh = async () => {
-    const frame = document.querySelector<HTMLElement>("[data-linkedin-frame]");
-    if (!frame) return;
-    try {
-      const res = await fetch(LINKEDIN_LATEST_ENDPOINT, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const id = (await res.text()).trim();
-      if (!isValidActivityId(id)) throw new Error("invalid id");
-      ensureIframe(frame, buildLinkedInEmbedUrl(id));
-    } catch {
-      const hasIframe = frame.querySelector("[data-linkedin-embed]");
-      if (!hasIframe) renderFallback(frame);
-    }
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", refresh);
-  } else {
-    refresh();
+<style>
+  /* The height comes from the post data, so it cannot be a Tailwind class:
+     the JIT compiler only picks up class names it can see in the source. */
+  .embed-frame {
+    display: block;
+    height: var(--embed-h-sm);
   }
-</script>
+
+  @media (min-width: 768px) {
+    .embed-frame {
+      height: var(--embed-h-md);
+    }
+  }
+</style>

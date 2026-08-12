@@ -1,7 +1,5 @@
 /**
- * Trackflaw social presence — central source of truth for the website.
- * Update `linkedinFeaturedPost` whenever a new post should be highlighted
- * on the homepage (no other code change required).
+ * Trackflaw social presence, central source of truth for the website.
  */
 
 export const socialHandles = {
@@ -22,7 +20,8 @@ export const socialUrls = {
 export const youtubeChannelId = "UC7lCQTgViJTA-J6aqY9YxwA";
 
 /**
- * Latest LinkedIn post is fetched dynamically from the Trackflaw proxy at
- * https://linkedin.trackflaw.com/ — see `src/utils/linkedin.ts`.
- * No manual update needed when a new post is published.
+ * The latest LinkedIn posts live in `src/data/linkedin.json`, refreshed on a
+ * schedule by `.github/workflows/linkedin.yml` and committed to the repo.
+ * Read them through `src/utils/linkedin.ts`. No network call at build or
+ * request time, and the file can be edited by hand if CI ever gets blocked.
  */

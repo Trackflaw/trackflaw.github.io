@@ -1,0 +1,45 @@
+name: Rafraîchir les publications LinkedIn
+
+# Met à jour src/data/linkedin.json depuis la page publique LinkedIn.
+# Le script est fail-soft : s'il ne peut rien récupérer, il ne modifie rien
+# et le site continue de servir la dernière publication connue.
+
+on:
+  schedule:
+    # Deux fois par jour, à 06:11 et 18:11 UTC. Les minutes décalées évitent
+    # la congestion des runners sur les heures rondes.
+    - cron: "11 6,18 * * *"
+  workflow_dispatch:
+
+# Un seul rafraîchissement à la fois, pour éviter deux commits concurrents.
+concurrency:
+  group: linkedin-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Récupérer les dernières publications
+        run: node scripts/fetch-linkedin.mjs
+
+      - name: Committer si le contenu a changé
+        run: |
+          if git diff --quiet -- src/data/linkedin.json public/images/linkedin; then
+            echo "Aucun changement, rien à committer."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/linkedin.json public/images/linkedin
+          git commit -m "chore(linkedin): mise à jour de la dernière publication"
+          git push
