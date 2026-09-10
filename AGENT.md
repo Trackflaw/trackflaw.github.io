@@ -31,7 +31,8 @@ il faut donc une connexion.
 - **Tailwind CSS 4** via le plugin Vite `@tailwindcss/vite`, pas de `tailwind.config.js` :
   tout le design system vit dans le bloc `@theme` de `src/styles/global.css`
 - **TypeScript strict**
-- `@astrojs/sitemap` génère `/sitemap-index.xml`
+- Sitemap maison : `src/pages/sitemap.xml.ts` génère `/sitemap.xml` à partir de la liste
+  `src/data/sitemap.ts`, voir « Sitemap et SEO »
 - Aucune dépendance runtime côté client, uniquement du TS vanilla
 
 ## Architecture
@@ -60,6 +61,7 @@ public/           # servi tel quel, dont _headers et _redirects
 | `/mentions-légales` | `src/pages/mentions-légales/index.astro` |
 | `/1337` | `src/pages/1337/index.astro` (easter egg) |
 | `/404` | `src/pages/404.astro` |
+| `/sitemap.xml` | `src/pages/sitemap.xml.ts` (endpoint, voir « Sitemap et SEO ») |
 
 Deux routes contiennent des **accents dans leur URL** (`/méthodologie`, `/mentions-légales`).
 C'est volontaire et référencé, ne pas « corriger ». Attention à l'encodage en shell et dans
@@ -133,6 +135,33 @@ est dans `src/data/social.ts`. Appelé depuis `index.astro`.
 
 **LinkedIn** : aucun appel réseau. Les posts sont **commités dans le dépôt**, voir la
 section suivante.
+
+**Git** (`src/utils/git.ts`) : pas un `fetch` HTTP, mais le sitemap peut lancer un
+`git fetch --unshallow` quand le clone est superficiel, voir « Sitemap et SEO ».
+
+## Sitemap et SEO
+
+`/sitemap.xml` est un sitemap plat généré par l'endpoint `src/pages/sitemap.xml.ts` à partir
+de `src/data/sitemap.ts`, la liste des pages indexables. **Toute nouvelle page publique doit y
+être ajoutée**, rien ne la détecte automatiquement. N'y mettre ni page `noindex` (`/1337`,
+`/404`), ni page bloquée par `public/robots.txt` (`/mentions-légales`) : un sitemap qui
+liste des URL non indexables est signalé en erreur par la Search Console.
+
+Règles appliquées, à conserver :
+
+- URL absolues en https, **sans slash final**, comme les `rel="canonical"` de `Layout.astro`
+  et comme la prod, qui redirige `/foo/` vers `/foo` (voir « Déploiement »). Les accents
+  sont encodés en pourcent par `new URL()`.
+- `<lastmod>` seulement, ni `<changefreq>` ni `<priority>` : Google et Bing les ignorent.
+- `lastmod` vient de git (`src/utils/git.ts`) : date du dernier commit touchant la page ou
+  les données qu'elle affiche (champ `sources`). Sur un clone superficiel (CI, dont Cloudflare),
+  l'historique est d'abord complété par `git fetch --unshallow --filter=blob:none`, sans les
+  blobs, donc rapide même avec les binaires du dépôt. Si git ou le réseau manquent, la balise
+  est **omise** plutôt que fausse, et le build passe quand même.
+- `public/robots.txt` déclare `Sitemap: https://trackflaw.com/sitemap.xml`. Cloudflare
+  préfixe ce fichier en prod avec son bloc « Content Signals », c'est attendu.
+- `public/_redirects` renvoie en 301 les anciens `/sitemap-index.xml` et `/sitemap-0.xml`
+  (ex `@astrojs/sitemap`) vers `/sitemap.xml`.
 
 ## Publications LinkedIn
 

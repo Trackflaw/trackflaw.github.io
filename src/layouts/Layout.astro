@@ -19,7 +19,10 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+// Cloudflare drops trailing slashes (`html_handling` in wrangler.toml), so the
+// canonical URL must not carry one either, except for the root.
+const canonicalPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const canonicalUrl = canonical ?? new URL(canonicalPath, Astro.site).href;
 const ogImage = new URL(image, Astro.site).href;
 ---
 

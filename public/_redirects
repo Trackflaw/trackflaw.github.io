@@ -1,2 +1,6 @@
 # Trailing-slash normalization is handled by `html_handling = "drop-trailing-slash"`
 # in wrangler.toml. Keep this file ready for future explicit redirects.
+
+# Files once produced by @astrojs/sitemap, now replaced by /sitemap.xml.
+/sitemap-index.xml /sitemap.xml 301
+/sitemap-0.xml /sitemap.xml 301

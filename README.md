@@ -7,7 +7,7 @@ Site vitrine de Trackflaw, Astro 5 + Tailwind 4, design glassmorphic.
 - **Astro 5**, generation statique, zéro JS par défaut
 - **Tailwind CSS 4**, design system via `@theme` tokens
 - **TypeScript strict**
-- **`@astrojs/sitemap`**, `/sitemap-index.xml` généré au build
+- **Sitemap maison**, `/sitemap.xml` généré au build depuis `src/data/sitemap.ts`
 
 ## Démarrer
 
